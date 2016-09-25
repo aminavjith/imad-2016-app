@@ -13,6 +13,8 @@ body {
 }
 
 .center {
+    top: 150px;
+    left: 0px;
     text-align: center;
 }
 
