@@ -1,0 +1,35 @@
+<html>
+
+ <title>
+    Article Two
+ </title>
+ <style>
+ .con1{
+     background-color: yellow;
+     left:0;
+     top:0;
+     height:200px;
+     width:100%;
+     font-family:verdana;
+     text-align: center;
+ }
+ .con2{
+     font-family:san-serif;
+     font-size:30px;
+     
+ }
+ </style>
+<header class="con1">
+  <h1>Article Two</h1>
+  <a href= "/"> Home </a>
+  <hr>
+</header>
+<div class="con2">
+  <h3> Sept 26th, 2016</h3><br>
+  <hr>
+  <p> The contents of this article are just blah blah blah. </p>
+  <p> The contents of this article are just blah blah blah. </p>
+  <p> The contents of this article are just blah blah blah. </p>
+</div>
+
+</html>
