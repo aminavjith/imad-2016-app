@@ -1,11 +1,11 @@
-body {
+body1 {
     font-family: verdana;
     font-size:20px;
     background-color: grey;
     margin-top: 75px;
     text-align: center;
 }
-header{
+header1{
   position:absolute;
   top:0;
   left:0;
@@ -15,7 +15,7 @@ header{
   text-align:center;
   font-size: 30px;
 }
-div {
+div1 {
   background-image: url("/ui/bg.jpg");
   top: 200px;
   left:0;
@@ -24,3 +24,18 @@ div {
   background-size: cover;
   z-index:1;
 }
+.con1{
+    
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: rgba(3, 169, 244, 0.27);
+    left: 0;
+    top: 0;
+    width: 100%;
+    font-family: verdana;
+    text-align: center;
+ }
+ .con2{
+     font-family:san-serif;
+     font-size:20px;
+ }
