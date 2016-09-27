@@ -6,36 +6,36 @@ var app = express();
 app.use(morgan('combined'));
 
 var Articles={
-    article-one:{
-    title:'Article One',
-    heading:'Article One',
-    date:'1 September, 2016',
-    content:`<p> This is the content of article one. It is just dummy article. Please bear.
-    This is the content of article one. It is just dummy article. Please bear.</p>
-    <p> This is the content of article one. It is just dummy article. Please bear.
-    This is the content of article one. It is just dummy article. Please bear.</p>`},
-    article-two:{
-    title:'Article Two',
-    heading:'Article Two',
-    date:'10 September, 2016',
-    content:`<p> This is the content of article two. It is just dummy article. Please bear.
-    This is the content of article two. It is just dummy article. Please bear.</p>
-    <p> This is the content of article two. It is just dummy article. Please bear.
-    This is the content of article two. It is just dummy article. Please bear.</p>
-    <p> This is the content of article two. It is just dummy article. Please bear.
-    This is the content of article two. It is just dummy article. Please bear.</p>`},
-    article-three:{
-    title:'Article Three',
-    heading:'Article Three',
-    date:'20 September, 2016',
-    content:`<p> This is the content of article three. It is just dummy article. Please bear.
-    This is the content of article three. It is just dummy article. Please bear.</p>
-    <p> This is the content of article three. It is just dummy article. Please bear.
-    This is the content of article three. It is just dummy article. Please bear.</p>
-    <p> This is the content of article three. It is just dummy article. Please bear.
-    This is the content of article three. It is just dummy article. Please bear.</p>
-    <p> This is the content of article three. It is just dummy article. Please bear.
-    This is the content of article three. It is just dummy article. Please bear.</p>`}
+    'article-one':{
+        title:'Article One',
+        heading:'Article One',
+        date:'1 September, 2016',
+        content:`<p> This is the content of article one. It is just dummy article. Please bear.
+        This is the content of article one. It is just dummy article. Please bear.</p>
+        <p> This is the content of article one. It is just dummy article. Please bear.
+        This is the content of article one. It is just dummy article. Please bear.</p>`},
+    'article-two':{
+        title:'Article Two',
+        heading:'Article Two',
+        date:'10 September, 2016',
+        content:`<p> This is the content of article two. It is just dummy article. Please bear.
+        This is the content of article two. It is just dummy article. Please bear.</p>
+        <p> This is the content of article two. It is just dummy article. Please bear.
+        This is the content of article two. It is just dummy article. Please bear.</p>
+        <p> This is the content of article two. It is just dummy article. Please bear.
+        This is the content of article two. It is just dummy article. Please bear.</p>`},
+    'article-three':{
+        title:'Article Three',
+        heading:'Article Three',
+        date:'20 September, 2016',
+        content:`<p> This is the content of article three. It is just dummy article. Please bear.
+        This is the content of article three. It is just dummy article. Please bear.</p>
+        <p> This is the content of article three. It is just dummy article. Please bear.
+        This is the content of article three. It is just dummy article. Please bear.</p>
+        <p> This is the content of article three. It is just dummy article. Please bear.
+        This is the content of article three. It is just dummy article. Please bear.</p>
+        <p> This is the content of article three. It is just dummy article. Please bear.
+        This is the content of article three. It is just dummy article. Please bear.</p>`}
 };
 function createTemplate(data){
     var title=data.title;
