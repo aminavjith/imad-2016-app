@@ -39,7 +39,7 @@ function createTemplate(data){
        <hr>
       </div>
     </html>`;
-    return createTemplate;
+    return HTMLTemplate;
 }
 
 
