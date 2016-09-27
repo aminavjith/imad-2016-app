@@ -5,12 +5,49 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleone={
+    title:'Article One',
+    heading:'Article One',
+    date:'1 September, 2016',
+    content:`<p> This is the content of article one. It is just dummy article. Please bear.
+    This is the content of article one. It is just dummy article. Please bear.</p>
+    <p> This is the content of article one. It is just dummy article. Please bear.
+    This is the content of article one. It is just dummy article. Please bear.</p>`
+};
+function createTemplate(data){
+    var title=data.title;
+    var heading=data.heading;
+    var date=data.date;
+    var content=data.content;
+    var HTMLTemplate=
+    `<html>
+      <head>
+        <title>
+          ${title}
+        </title>
+        <link  href="/ui/style.css" rel="stylesheet" />
+      </head>
+      <div class="header">${heading}
+        <br>
+        <a href="/ui/index.html">Home
+        </a>
+        <hr>
+      </div>
+      <div class="bodyx">
+        ${date}<br>
+        ${content}
+       <hr>
+      </div>
+    </html>`;
+    return createTemplate;
+}
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-
 app.get('/article-one', function(req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.send(htmlTemplate(articleone));
 });
 app.get('/article-two', function(req, res){
     res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
@@ -27,9 +64,6 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/ui/bg.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'bg.jpg'));
-});
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
