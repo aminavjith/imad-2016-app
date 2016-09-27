@@ -5,14 +5,37 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleone={
+var Articles={
+    article-one:{
     title:'Article One',
     heading:'Article One',
     date:'1 September, 2016',
     content:`<p> This is the content of article one. It is just dummy article. Please bear.
     This is the content of article one. It is just dummy article. Please bear.</p>
     <p> This is the content of article one. It is just dummy article. Please bear.
-    This is the content of article one. It is just dummy article. Please bear.</p>`
+    This is the content of article one. It is just dummy article. Please bear.</p>`},
+    article-two:{
+    title:'Article Two',
+    heading:'Article Two',
+    date:'10 September, 2016',
+    content:`<p> This is the content of article two. It is just dummy article. Please bear.
+    This is the content of article two. It is just dummy article. Please bear.</p>
+    <p> This is the content of article two. It is just dummy article. Please bear.
+    This is the content of article two. It is just dummy article. Please bear.</p>
+    <p> This is the content of article two. It is just dummy article. Please bear.
+    This is the content of article two. It is just dummy article. Please bear.</p>`},
+    article-three:{
+    title:'Article Three',
+    heading:'Article Three',
+    date:'20 September, 2016',
+    content:`<p> This is the content of article three. It is just dummy article. Please bear.
+    This is the content of article three. It is just dummy article. Please bear.</p>
+    <p> This is the content of article three. It is just dummy article. Please bear.
+    This is the content of article three. It is just dummy article. Please bear.</p>
+    <p> This is the content of article three. It is just dummy article. Please bear.
+    This is the content of article three. It is just dummy article. Please bear.</p>
+    <p> This is the content of article three. It is just dummy article. Please bear.
+    This is the content of article three. It is just dummy article. Please bear.</p>`}
 };
 function createTemplate(data){
     var title=data.title;
@@ -46,8 +69,9 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/article-one', function(req, res){
-    res.send(createTemplate(articleone));
+app.get('/:articleName', function(req, res){
+    var articleName= req.params.articleName;
+    res.send(createTemplate(Articles(articleName));
 });
 app.get('/article-two', function(req, res){
     res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
