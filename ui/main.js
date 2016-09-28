@@ -5,11 +5,15 @@ var element = document.getElementById('text1');
 element.innerHTML = 'Amritha Navjith';
 
 
-var move = document.getElementById('img1');
+var img = document.getElementById('img1');
 
-move.onclick = function() {
-    alert('From 1');
-    move.style.marginLeft = '200px';
-    //alert('From 2.main.js.');
+var marginLeft=0;
+function moveRight(){
+  marginLeft = marginLeft + 1;
+  img.style.marginLeft = marginLeft + 'px';
+
+}
+img.onclick = function(){
+  var interval= setInterval(moveRight,50);
 };
 
