@@ -9,14 +9,13 @@ var img = document.getElementById('img1');
 
 var marginLeft=0;
 function moveRight(){
- do{
-     
   marginLeft = marginLeft + 1;
   img.style.marginLeft = marginLeft + 'px';
- }while (marginLeft<=300);
-
 }
+
 img.onclick = function(){
   var interval= setInterval(moveRight,50);
+  alert('marginLeft '+marginLeft);
+  
 };
 
