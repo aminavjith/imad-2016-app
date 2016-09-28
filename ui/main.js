@@ -21,15 +21,7 @@ function moveRight(){
 }
 
 img.onclick = function(){
-    alert('marginLeft'+ marginLeft);
-  if (marginLeft > 300){
-      alert('300!');
-      clearInterval(interval);
-  }
-  else{
+    
       var interval= setInterval(moveRight,50);
-  }
-  
-  
-};
+}
 
