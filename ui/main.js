@@ -9,8 +9,15 @@ var img = document.getElementById('img1');
 
 var marginLeft=0;
 function moveRight(){
-  marginLeft = marginLeft + 1;
-  img.style.marginLeft = marginLeft + 'px';
+    if(marginLeft<300)
+    {
+        marginLeft = marginLeft + 1;
+    }
+    else
+    {
+        marginLeft = 300;
+    }
+    img.style.marginLeft = marginLeft + 'px';
 }
 
 img.onclick = function(){
