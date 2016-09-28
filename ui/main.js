@@ -6,8 +6,8 @@ element.innerHTML = 'Amritha Navjith';
 
 var move = document.getElementById('img1');
 move.onclick = function() {
-    console.log('Loaded1!');
+    alert('From 1.main.js.');
     move.style.marginLeft = '100px';
-    console.log('Loaded2!');
+    alert('From 2.main.js.');
 };
 
