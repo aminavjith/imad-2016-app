@@ -2,9 +2,6 @@ console.log('Loaded!');
 alert('From main.js.');
 
 var element = document.getElementById('text1');
-function myFunction() {
-    document.getElementById("demo").style.color = "red";
-}
 element.innerHTML = 'Amritha Navjith';
 
 
