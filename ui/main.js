@@ -10,7 +10,7 @@ element.innerHTML = 'Amritha Navjith';
 
 var move = document.getElementById('img1');
 
-move.onclick = function() {
+move.ondblclick = function() {
     alert('From 1');
     //move.style.marginLeft = '100px';
     //alert('From 2.main.js.');
