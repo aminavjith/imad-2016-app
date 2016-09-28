@@ -14,10 +14,14 @@ function moveRight(){
 }
 
 img.onclick = function(){
-  var interval= setInterval(moveRight,50);
+    alert('marginLeft'+ marginLeft);
   if (marginLeft > 300){
       clearInterval(interval);
   }
+  else{
+      var interval= setInterval(moveRight,50);
+  }
+  
   
 };
 
