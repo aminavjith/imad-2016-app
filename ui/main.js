@@ -5,7 +5,7 @@ var element = document.getElementById('text1');
 element.innerHTML = 'Amritha Navjith';
 
 
-var move = document.getElementById('img1');
+var move = document.getElementById('img');
 
 move.ondblclick = function() {
     alert('From 1');
