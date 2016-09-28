@@ -52,7 +52,7 @@ function createTemplate(data){
       </head>
       <div class="header">${heading}
         <br>
-        <a href="/ui/index.html">Home
+        <a href="/">Home
         </a>
         <hr>
       </div>
@@ -68,6 +68,7 @@ function createTemplate(data){
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+
 
 app.get('/:articleName', function(req, res){
     var articleName= req.params.articleName;
