@@ -1,11 +1,11 @@
 console.log('Loaded!');
 alert('From main.js.');
 
-var element = document.getElementById('text1');
-element.innerHTML = 'Amritha Navjith';
+//var element = document.getElementById('text1');
+//element.innerHTML = 'Amritha Navjith';
 
 
-var img = document.getElementById('img1');
+/*var img = document.getElementById('img1');
 
 var marginLeft=0;
 function moveRight(){
@@ -25,3 +25,10 @@ img.onclick = function(){
       var interval= setInterval(moveRight,50);
 }
 
+<script>
+      console.log('Hello World');
+      alert('Hi, test only');
+    </script>
+    <script type="text/javascript" src="/ui/main.js">
+    </script>
+*/
