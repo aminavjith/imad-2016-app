@@ -14,13 +14,18 @@ button.onclick = function() {
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/counter', true);
     request.send(null);
-    
 };
-
-
-
-
-
+var inputName = document.getElementById('name');
+var name1 = inputName.value;
+var submit = document.getElementById('submit1');
+submit.onclick = function(){
+    var names = ['name1', 'name2', 'name3', 'name4'];
+    var list = '';
+    for(var i = 0; i < names.length; i++ ){
+        list += '<li>' + names[i] + '<li>';
+    }
+    var ul = document.getElementById('listing');
+};
 
 
 
