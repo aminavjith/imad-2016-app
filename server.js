@@ -4,12 +4,6 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var names = [];
-app.get('/submit-name/:name', function(req, res){
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
 
 var articles={
     'article-one':{
@@ -43,6 +37,7 @@ var articles={
         <p> This is the content of article three. It is just dummy article. Please bear.
         This is the content of article three. It is just dummy article. Please bear.</p>`}
 };
+
 function createTemplate(data){
     var title=data.title;
     var heading=data.heading;
@@ -82,7 +77,7 @@ app.get('/counter', function(req, res){
 });
 
 var names = [];
-app.get('/submit-name/:name', function(req, res){
+app.get('/submit-name/', function(req, res){
     var name = req.query.name;
     names.push(name);
     res.send(JSON.stringify(names));
