@@ -4,7 +4,7 @@ var counter = 0;
 element.onclick = function() {
     counter = counter + 1;
     var span = getElementById('count');
-    count = counter.toString();
+    span.innerHTML = counter.toString();
 }
 
 
