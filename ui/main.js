@@ -11,10 +11,10 @@ button.onclick = function() {
                 var span = document.getElementById('count');
                 span.innerHTML = counter.toString();
             }
-        };
+    };
     request.open('GET','http://aminavjith.imad.hasura-app.io/counter', true);
     request.send(null);
-    };
+};
 
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
@@ -31,15 +31,14 @@ submit.onclick = function() {
                 for (var i = 0; i < names.length; i++ ){
                     list += '<li>' + names[i] + '<li>';
                 }
-    
             var ul = document.getElementById('listing');
             ul.innerHTML = list;
-        }
-   
+            }
+    };
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-name?name=' + name1, true);
     request.send(null);
 };
-};
+
 
 
 
