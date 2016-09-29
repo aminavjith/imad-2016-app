@@ -35,9 +35,10 @@ submit.onclick = function() {
             var ul = document.getElementById('listing');
             ul.innerHTML = list;
         }
-    };
+   
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-name?name=' + name1, true);
     request.send(null);
+};
 };
 
 
