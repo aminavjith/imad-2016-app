@@ -15,10 +15,11 @@ button.onclick = function() {
     request.open('GET','http://aminavjith.imad.hasura-app.io/counter', true);
     request.send(null);
     };
-var inputName = document.getElementById('name');
-var name1 = inputName.value;
+
 var submit = document.getElementById('submit_btn');
 submit.onclick = function() {
+    var inputName = document.getElementById('name');
+    var name1 = inputName.value;
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE)
