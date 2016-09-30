@@ -62,6 +62,14 @@ function createTemplate(data){
         ${content}
        <hr>
       </div>
+      
+ <input type="text" placeholder="Enter your comment here" id="name"/>
+ <input type="Submit" id="submit_btn"/>
+ <ul id="listing">
+ </ul>
+  <script type="text/javascript" src="/ui/main.js">
+    </script>
+
     </html>`;
     return HTMLTemplate;
 }
