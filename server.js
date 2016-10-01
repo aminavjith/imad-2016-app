@@ -108,7 +108,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/favicon.ico', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui','favicon.ico'));
+  res.sendFile(path.join(__dirname,'favicon.ico'));
 });
 
 
