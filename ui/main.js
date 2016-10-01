@@ -1,5 +1,5 @@
 
-var button = document.getElementById('button1');
+/*var button = document.getElementById('button1');
 var counter = 0;
 button.onclick = function() {
     var request = new XMLHttpRequest();
@@ -38,9 +38,10 @@ submit.onclick = function() {
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-name?name=' + name1, true);
     request.send(null);
 };
-
+*/
 var submit1 = document.getElementById('submit_btn2');
 submit1.onclick = function() {
+    alert('From main.js.');
     console.log('sure?');
     var inputName = document.getElementById('comment');
     var name1 = inputName.value;
