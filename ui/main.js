@@ -41,6 +41,7 @@ submit.onclick = function() {
 
 var submit1 = document.getElementById('submit_btn2');
 submit1.onclick = function() {
+    console.log('sure?');
     var inputName = document.getElementById('comment');
     var name1 = inputName.value;
     var request = new XMLHttpRequest();
