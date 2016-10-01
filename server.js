@@ -50,7 +50,7 @@ function createTemplate(data){
           ${title}
         </title>
         <link  href="/ui/style.css" rel="stylesheet" />
-        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" href="" />
       </head>
       <div class="header">${heading}
         <br>
