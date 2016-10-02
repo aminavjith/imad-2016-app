@@ -42,10 +42,12 @@ submit.onclick = function() {
 var submit1 = document.getElementById('submit_btn2');
 submit1.onclick = function() {
     alert('From main.js.');
-    console.log('sure?');
     var inputName = document.getElementById('comment');
     var name1 = inputName.value;
+    var inputName1 = document.getElementById('email');
+    var name2 = inputName1.value;
     var request = new XMLHttpRequest();
+    var request1 = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE)
             if (request.status === 200)
@@ -61,6 +63,8 @@ submit1.onclick = function() {
             ul.innerHTML = list;
             }
     };
+    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-name?name=' + name1, true);
+    request.send(null);
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-name?name=' + name1, true);
     request.send(null);
 };
