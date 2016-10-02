@@ -62,7 +62,7 @@ submit1.onclick = function() {
                     splitter = names[i];
                     var pairs = splitter.split('||');
                     list += '<li> Comment:' + pairs[0] + '</li>';
-                    list += '<li> By:' + pairs[1] + '</li>';
+                    list += '<li> &nbsp;&nbsp;By:' + pairs[1] + '</li>';
                     list += '<li> @' + pairs[2] + '</li><br>';
                 }
             var ul = document.getElementById('listing');
