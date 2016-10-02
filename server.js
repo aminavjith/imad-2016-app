@@ -63,7 +63,8 @@ function createTemplate(data){
         ${content}
        <hr>
       </div>
-      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/>
+      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5">
+      </textarea>
       <input type="Submit" id="submit_btn2"/>
       <ul id="listing">
       </ul>
