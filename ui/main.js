@@ -73,26 +73,6 @@ submit1.onclick = function() {
     
 };
 
-function QueryStringToJSON(str) {            
-    var pairs = str.split('||');
-    var result = {};
-    pairs.forEach(function(pair) 
-    {
-        pair = pair.split('=');
-        var comment = pair[0];
-        var email = pair[1];
-        if(comment.length > 0)
-            if (result[comment] !== undefined) {
-                if (result[comment].push !== 0) {
-                    result[comment] = [result[comment]];
-                }
-            result[comment].push(email || '');
-            } 
-            else {
-                result[comment] = email || '';
-            });
-    });
-
 
 
 
