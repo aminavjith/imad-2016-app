@@ -62,13 +62,13 @@ submit1.onclick = function() {
                     splitter = names[i];
                     var pairs = splitter.split('||');
                     list += '<li>' + pairs[0] + '</li>';
-                    list += '<li>' + pairs[1] + '</li>';
+                    list += '<li>' + pairs[1] + '</li><br>';
                 }
             var ul = document.getElementById('listing');
             ul.innerHTML = list;
             }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||email=' + email, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + email, true);
     request.send(null);
     
 };
