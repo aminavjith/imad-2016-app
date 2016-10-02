@@ -64,7 +64,8 @@ function createTemplate(data){
        <hr>
       </div>
       <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5">
-      </textarea>
+      </textarea><br>
+      <input type="text id="email" /><br>
       <input type="Submit" id="submit_btn2"/>
       <ul id="listing">
       </ul>
