@@ -61,8 +61,8 @@ submit1.onclick = function() {
                 for (var i = 0; i < names.length; i++ ){
                     splitter = names[i];
                     var pairs = splitter.split('||');
-                    list += '<li>' + pairs[0] + '</li>';
-                    list += '<li>' + pairs[1] + '</li><br>';
+                    list += '<li> Comment:' + pairs[0] + '</li>';
+                    list += '<li>      By ' + pairs[1] + '</li><br>';
                 }
             var ul = document.getElementById('listing');
             ul.innerHTML = list;
