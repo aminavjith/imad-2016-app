@@ -44,8 +44,10 @@ submit1.onclick = function() {
     alert('From main.js.');
     var inputName = document.getElementById('comment');
     var comment = inputName.value;
+    inputName.value = '';
     var inputName1 = document.getElementById('email');
     var email = inputName1.value;
+    inputName1.value = '';
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE)
@@ -53,10 +55,14 @@ submit1.onclick = function() {
             {
                 var names = request.responseText;
                 names = JSON.parse(names);
+                var splitter = ''; 
                 var list = '';
                 
                 for (var i = 0; i < names.length; i++ ){
-                    list += '<li>' + names[i] + '</li>';
+                    splitter = names[i];
+                    var pairs = splitter.split('||');
+                    list += '<li>' + pairs[0] + '</li>';
+                    list += '<li>' + pairs[1] + '</li>';
                 }
             var ul = document.getElementById('listing');
             ul.innerHTML = list;
@@ -66,6 +72,26 @@ submit1.onclick = function() {
     request.send(null);
     
 };
+
+function QueryStringToJSON(str) {            
+    var pairs = str.split('||');
+    var result = {};
+    pairs.forEach(function(pair) 
+    {
+        pair = pair.split('=');
+        var comment = pair[0];
+        var email = pair[1];
+        if(comment.length > 0)
+            if (result[comment] !== undefined) {
+                if (result[comment].push !== 0) {
+                    result[comment] = [result[comment]];
+                }
+            result[comment].push(email || '');
+            } 
+            else {
+                result[comment] = email || '';
+            });
+    });
 
 
 
