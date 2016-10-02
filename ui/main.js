@@ -68,7 +68,7 @@ submit1.onclick = function() {
             ul.innerHTML = list;
             }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + email, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + email +'||' + new Date(), true);
     request.send(null);
     
 };
