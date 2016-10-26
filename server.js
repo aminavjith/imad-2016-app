@@ -8,7 +8,7 @@ var config = {
     database : 'aminavjith',
     host: 'db.imad.hasura-app.io',
     port : '5432',
-    password : 'db.env.DB_PASSWORD' 
+    password : process.env.DB_PASSWORD
 };
 
 var app = express();
@@ -138,9 +138,6 @@ app.get('/ui/main.js', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-
-
-
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
