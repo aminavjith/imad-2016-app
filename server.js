@@ -68,7 +68,7 @@ function createTemplate(data){
         <hr>
       </div>
       <div class="bodyx">
-        ${date}<br>
+        ${date.toDateString()}<br>
         ${content}
        <hr>
       </div>
