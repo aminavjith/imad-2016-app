@@ -11,7 +11,46 @@ var config = {
     password : process.env.DB_PASSWORD
 };
 
+var app = express();
+app.use(morgan('combined'));
 
+
+
+function createTemplate(data){
+    var title=data.title;
+    var heading=data.heading;
+    var date=data.date;
+    var content=data.content;
+    var HTMLTemplate=
+    `<html>
+      <head>
+        <title>
+          ${title}
+        </title>
+        <link  href="/ui/style.css" rel="stylesheet" />
+        <link  href="/favicon.ico" rel="icon" />
+      </head>
+      <div class="header">${heading}
+        <br>
+        <a href="/">Home
+        </a>
+        <hr>
+      </div>
+      <div class="bodyx">
+        ${date.toDateString()}<br>
+        ${content}
+       <hr>
+      </div>
+      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
+      <input type="text" id="email" placeholder="Email address"/><br><br>
+      <input type="Submit" id="submit_btn2"/>
+      <ul id="listing">
+      </ul>
+      <script type="text/javascript" src="/ui/main.js">
+      </script>
+     </html>`;
+    return HTMLTemplate;
+}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
