@@ -11,77 +11,7 @@ var config = {
     password : process.env.DB_PASSWORD
 };
 
-var app = express();
-app.use(morgan('combined'));
 
-var articles={
-    'article-one':{
-        title:'Article One',
-        heading:'Article One',
-        date:'1 September, 2016',
-        content:`<p> This is the content of article one. It is just dummy article. Please bear.
-        This is the content of article one. It is just dummy article. Please bear.</p>
-        <p> This is the content of article one. It is just dummy article. Please bear.
-        This is the content of article one. It is just dummy article. Please bear.</p>`},
-    'article-two':{
-        title:'Article Two',
-        heading:'Article Two',
-        date:'10 September, 2016',
-        content:`<p> This is the content of article two. It is just dummy article. Please bear.
-        This is the content of article two. It is just dummy article. Please bear.</p>
-        <p> This is the content of article two. It is just dummy article. Please bear.
-        This is the content of article two. It is just dummy article. Please bear.</p>
-        <p> This is the content of article two. It is just dummy article. Please bear.
-        This is the content of article two. It is just dummy article. Please bear.</p>`},
-    'article-three':{
-        title:'Article Three',
-        heading:'Article Three',
-        date:'20 September, 2016',
-        content:`<p> This is the content of article three. It is just dummy article. Please bear.
-        This is the content of article three. It is just dummy article. Please bear.</p>
-        <p> This is the content of article three. It is just dummy article. Please bear.
-        This is the content of article three. It is just dummy article. Please bear.</p>
-        <p> This is the content of article three. It is just dummy article. Please bear.
-        This is the content of article three. It is just dummy article. Please bear.</p>
-        <p> This is the content of article three. It is just dummy article. Please bear.
-        This is the content of article three. It is just dummy article. Please bear.</p>`}
-};
-
-function createTemplate(data){
-    var title=data.title;
-    var heading=data.heading;
-    var date=data.date;
-    var content=data.content;
-    var HTMLTemplate=
-    `<html>
-      <head>
-        <title>
-          ${title}
-        </title>
-        <link  href="/ui/style.css" rel="stylesheet" />
-        <link  href="/favicon.ico" rel="icon" />
-      </head>
-      <div class="header">${heading}
-        <br>
-        <a href="/">Home
-        </a>
-        <hr>
-      </div>
-      <div class="bodyx">
-        ${date.toDateString()}<br>
-        ${content}
-       <hr>
-      </div>
-      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
-      <input type="text" id="email" placeholder="Email address"/><br><br>
-      <input type="Submit" id="submit_btn2"/>
-      <ul id="listing">
-      </ul>
-      <script type="text/javascript" src="/ui/main.js">
-      </script>
-     </html>`;
-    return HTMLTemplate;
-}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
