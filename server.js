@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+const crypto = require('crypto');
 
 var config = {
     user : 'aminavjith',
@@ -13,8 +14,6 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
-
-
 
 function createTemplate(data){
     var title=data.title;
@@ -103,6 +102,16 @@ app.get('/articles/:articleName', function(req, res){
             res.send(createTemplate(articleData));
         }
     });
+});
+
+function hash(input, salt){    
+    var hashed = crypto.pbkdf2(input, salt, 10000, 512, 'sha512');
+    return hashed.toString('hex');
+}
+
+app.get('/hash/:input', function (req, res) {
+  hashedString = hash(req.params.input, 'this-is-some-random-string');
+  res.send(hashedString);
 });
 
 app.get('/ui/style.css', function (req, res) {
