@@ -1,8 +1,7 @@
 
 var submit = document.getElementById('button');
 submit.onclick = function() {
-    var inputName = document.getElementById('name');
-    var name1 = inputName.value;
+    console.log('here');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
