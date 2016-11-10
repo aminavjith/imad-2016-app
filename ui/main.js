@@ -1,8 +1,8 @@
 
-var submit1 = document.getElementById('submit-comment');
-var submit = document.getElementById('submit-user');
+var submit2 = document.getElementById('submit-comment');
+var submit1 = document.getElementById('submit-user');
 
-submit1.onclick = function() {
+submit2.onclick = function() {
     alert('From main.js.');
     var inputName = document.getElementById('comment');
     var comment = inputName.value;
@@ -32,7 +32,7 @@ request.onreadystatechange = function(){
 };
 
 
-submit.onclick = function() {
+submit1.onclick = function() {
     console.log('here');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
