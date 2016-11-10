@@ -1,22 +1,5 @@
 
-/*var button = document.getElementById('button1');
-var counter = 0;
-button.onclick = function() {
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE)
-            if (request.status === 200)
-            {
-                var counter = request.responseText;
-                var span = document.getElementById('count');
-                span.innerHTML = counter.toString();
-            }
-    };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/counter', true);
-    request.send(null);
-};
-
-var submit = document.getElementById('submit_btn');
+var submit = document.getElementById('submit');
 submit.onclick = function() {
     var inputName = document.getElementById('name');
     var name1 = inputName.value;
@@ -35,10 +18,12 @@ submit.onclick = function() {
             ul.innerHTML = list;
             }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-name?name=' + name1, true);
-    request.send(null);
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
+    request.open('POST','http://aminavjith.imad.hasura-app.io/login', true);
+    request.send(JSON.stringify({username: username, password: password}));
 };
-*/
+
 var submit1 = document.getElementById('submit_btn2');
 submit1.onclick = function() {
     alert('From main.js.');
