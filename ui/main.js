@@ -1,5 +1,7 @@
 
 var submit1 = document.getElementById('submit-comment');
+var submit = document.getElementById('submit-user');
+
 submit1.onclick = function() {
     alert('From main.js.');
     var inputName = document.getElementById('comment');
@@ -27,10 +29,9 @@ request.onreadystatechange = function(){
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + new Date(), true);
     request.send(null);
-    
 };
 
-var submit = document.getElementById('submit-user');
+
 submit.onclick = function() {
     console.log('here');
     var request = new XMLHttpRequest();
