@@ -36,10 +36,10 @@ submit1.onclick = function() {
     var comment = inputName.value;
     inputName.value = '';
    
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE)
-            if (request.status === 200)
+var request = new XMLHttpRequest();
+request.onreadystatechange = function(){
+    if(request.readyState === XMLHttpRequest.DONE)
+        if (request.status === 200)
             {
                 var names = request.responseText;
                 names = JSON.parse(names);
@@ -50,10 +50,10 @@ submit1.onclick = function() {
                     var pairs = splitter.split('||');
                     list += '<li> Comment:' + pairs[0] + '</li>';
                     list += '<li> @' + pairs[1] + '</li><br>';
-                }
+            }
             var ul = document.getElementById('listing');
             ul.innerHTML = list;
-            }
+        }
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + new Date(), true);
     request.send(null);
@@ -84,15 +84,4 @@ function moveRight(){
     img.style.marginLeft = marginLeft + 'px';
 }
 
-img.onclick = function(){
-    
-      var interval= setInterval(moveRight,50);
-}
-
-<script>
-      console.log('Hello World');
-      alert('Hi, test only');
-    </script>
-    <script type="text/javascript" src="/ui/main.js">
-    </script>
 */
