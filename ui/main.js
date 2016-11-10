@@ -1,5 +1,5 @@
 
-var submit = document.getElementById('submit');
+var submit = document.getElementById('button');
 submit.onclick = function() {
     var inputName = document.getElementById('name');
     var name1 = inputName.value;
