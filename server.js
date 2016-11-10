@@ -111,6 +111,15 @@ app.get('/articles/:articleName', function(req, res){
     });
 });
 
+//app.get('/submit-comments/:s, function(req, res){
+      pool.query('INSERT INTO "comments" (username, password) VALUES ($1, $2);', [username,dbString], function(err, result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send('Username: ' + username + 'created successfully');
+        }
+    });
+//}
 function hash(input, salt){    
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
     return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
@@ -134,6 +143,7 @@ app.post('/user-name', function (req, res){
         }
     });
 });
+
 
 app.post('/login', function (req, res){
     var username = req.body.username;
