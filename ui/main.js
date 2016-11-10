@@ -1,5 +1,5 @@
 
-var submit = document.getElementById('button');
+var submit = document.getElementById('submit-user');
 submit.onclick = function() {
     console.log('here');
     var request = new XMLHttpRequest();
@@ -29,7 +29,7 @@ submit.onclick = function() {
     request.send(JSON.stringify({username: username, password: password}));
 };
 
-var submit1 = document.getElementById('submit_btn2');
+var submit1 = document.getElementById('submit-comment');
 submit1.onclick = function() {
     alert('From main.js.');
     var inputName = document.getElementById('comment');
