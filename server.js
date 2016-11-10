@@ -77,11 +77,7 @@ app.get('/favicon.ico', function (req, res) {
   res.sendFile(path.join(__dirname,'favicon.ico'));
 });
 
-var counter = 0;
-app.get('/counter', function(req, res){
-    counter = counter + 1;
-    res.send(counter.toString());
-});
+
 
 var names = [];
 app.get('/submit-comment/', function(req, res){
@@ -111,15 +107,17 @@ app.get('/articles/:articleName', function(req, res){
     });
 });
 
-//app.get('/submit-comments/:s, function(req, res){
-      pool.query('INSERT INTO "comments" (username, password) VALUES ($1, $2);', [username,dbString], function(err, result){
+/*app.get('/submit-comments/:s, function(req, res){
+        var comment = req.body.username;
+        var timestamp = req.body.password;
+      pool.query('INSERT INTO "comments" (comment, timestamp) VALUES ($1, $2);', [comment,timestamp], function(err, result){
         if(err){
             res.status(500).send(err.toString());
         }else{
             res.send('Username: ' + username + 'created successfully');
         }
     });
-//}
+//}*/
 function hash(input, salt){    
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
     return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
