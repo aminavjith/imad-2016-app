@@ -29,7 +29,7 @@ submit1.onclick = function() {
     request.send(JSON.stringify({username: username, password: password}));
 };
 
-/*var submit2 = document.getElementById('register');
+var submit2 = document.getElementById('register');
 submit2.onclick = function() {
     console.log('here');
     var request = new XMLHttpRequest();
@@ -37,29 +37,16 @@ submit2.onclick = function() {
         if(request.readyState === XMLHttpRequest.DONE){
             if (request.status === 200)
             {
-               alert('Logged in successfully.');
+               alert('Registered successfully.');
             }
-            else if(request.status === 403)
+            else 
             {
-                alert('Incorrect credentials.');
-            }
-            else if(request.status === 500)
-            {
-                alert('Unknown error');
+                alert('Not able to register');
             }
         }
     };
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
-    console.log(username);
-    console.log(password);
     request.open('GET','http://aminavjith.imad.hasura-app.io/register?user=' + username + '||' + password, true);
-    request.send(JSON.stringify({username: username, password: password}));
 };
-*/
-request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + new Date(), true);
-    request.send(null);
-
 
 
 /*console.log('Loaded!');
