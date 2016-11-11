@@ -1,8 +1,8 @@
-var submit2 = document.getElementById('submit-comment');
-submit2.onclick = function() {
-    alert('From main.js.');
-    var inputName = document.getElementById('comment');
-    var comment = inputName.value;
+var submit = document.getElementById('submit-comment');
+submit.onclick = function() {
+    alert('From article.js.');
+    var inputComment = document.getElementById('comment');
+    var comment = inputComment.value;
     //inputName.value = '';
    
 var request = new XMLHttpRequest();
