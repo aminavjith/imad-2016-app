@@ -3,7 +3,7 @@ submit2.onclick = function() {
     alert('From main.js.');
     var inputName = document.getElementById('comment');
     var comment = inputName.value;
-    inputName.value = '';
+    //inputName.value = '';
    
 var request = new XMLHttpRequest();
 request.onreadystatechange = function(){
