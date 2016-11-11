@@ -52,7 +52,7 @@ function createTemplate(data){
       <ul id="listing">
       </ul>
       
-      <script type="text/javascript" src="/ui/main.js">
+      <script type="text/javascript" src="/ui/article.js">
       </script>
      </html>`;
     return HTMLTemplate;
