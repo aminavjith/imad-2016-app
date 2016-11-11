@@ -63,11 +63,28 @@ function hash(input, salt){
     return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
 }
 
-var names = [];
+var comments = [];
 app.get('/submit-comment/', function(req, res){
-    var name = req.query.comment;
-    names.push(name);
-    res.send(JSON.stringify(names));
+    var comment = req.query.comment;
+    comments.push(comment);
+    res.send(JSON.stringify(comments));
+});
+
+app.get('/register/', function(req, res){
+    var user = req.query.user;
+    var details = user.split('||');
+    var username = details[0];
+    var password = details[1];
+    var salt = crypto.randomBytes(128).toString('hex');
+    var dbString = hash(password, salt);
+    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username,dbString], function(err, result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            res.send('Username: ' + username + 'created successfully');
+        }
+    });
 });
 
 var names = [];
@@ -126,7 +143,6 @@ app.get('/user-name', function (req, res){
         }
     });
 });
-
 
 app.post('/login', function (req, res){
     var username = req.body.username;
