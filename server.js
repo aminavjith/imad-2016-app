@@ -13,7 +13,7 @@ var config = {
     port : '5432',
     password : process.env.DB_PASSWORD
 };
-
+var pool = new Pool(config);
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
@@ -58,26 +58,10 @@ function createTemplate(data){
     return HTMLTemplate;
 }
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-});
-
-var pool = new Pool(config);
-app.get('/test-db', function (req, res){
-    pool.query('SELECT * FROM test1', function(err, result){
-        if(err){
-            res.status(500).send(err.toString());
-        }else{
-            res.send(JSON.stringify(result.rows));
-        }
-    });
-});
-
-app.get('/favicon.ico', function (req, res) {
-  res.sendFile(path.join(__dirname,'favicon.ico'));
-});
-
-
+function hash(input, salt){    
+    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+    return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
+}
 
 var names = [];
 app.get('/submit-comment/', function(req, res){
@@ -91,6 +75,11 @@ app.get('/submit-name/', function(req, res){
     var name = req.query.name;
     names.push(name);
     res.send(JSON.stringify(names));
+});
+
+app.get('/logout', function (req, res){
+    delete req.session.auth;
+    res.send('You are logged out.'); 
 });
 
 app.get('/articles/:articleName', function(req, res){
@@ -108,8 +97,8 @@ app.get('/articles/:articleName', function(req, res){
 });
 
 /*app.get('/submit-comments/:s, function(req, res){
-        var comment = req.body.username;
-        var timestamp = req.body.password;
+        var comment = req.body.comment;
+        var timestamp = timestamp();
       pool.query('INSERT INTO "comments" (comment, timestamp) VALUES ($1, $2);', [comment,timestamp], function(err, result){
         if(err){
             res.status(500).send(err.toString());
@@ -118,17 +107,13 @@ app.get('/articles/:articleName', function(req, res){
         }
     });
 //}*/
-function hash(input, salt){    
-    var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
-    return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
-}
 
 app.get('/hash/:input', function (req, res) {
   hashedString = hash(req.params.input, 'this-is-some-random-string');
   res.send(hashedString);
 });
 
-app.post('/user-name', function (req, res){
+app.get('/user-name', function (req, res){
     var username = req.body.username;
     var password = req.body.password;
     var salt = crypto.randomBytes(128).toString('hex');
@@ -179,10 +164,12 @@ app.get('/check-login', function (req, res){
     }
 });
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
 
-app.get('/logout', function (req, res){
-    delete req.session.auth;
-    res.send('You are logged out.'); 
+app.get('/favicon.ico', function (req, res) {
+  res.sendFile(path.join(__dirname,'favicon.ico'));
 });
 
 app.get('/ui/style.css', function (req, res) {
@@ -200,7 +187,6 @@ app.get('/ui/article.js', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
