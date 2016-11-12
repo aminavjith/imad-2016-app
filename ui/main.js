@@ -1,5 +1,5 @@
 
-            var submit3=0;
+var submit3=0;
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
     console.log('login');
@@ -13,7 +13,7 @@ submit1.onclick = function() {
                var listing = document.getElementById('login');
                var loggedIn =` <u> You are successfully logged in</u>
                 <br>
-                <button type="button" id="log">Logout</button>
+                <button type="button" id="log" value="Logout">Logout</button>
                 <br>
                 <br>
                 <br>`;
