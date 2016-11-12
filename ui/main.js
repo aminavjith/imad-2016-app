@@ -13,7 +13,7 @@ submit1.onclick = function() {
                var listing = document.getElementById('login');
                var loggedIn =` <u> You are successfully logged in</u>
                 <br>
-                <button type="button" id="logout">Logout</button>
+                <button type="button" id="log">Logout</button>
                 <br>
                 <br>
                 <br>`;
@@ -61,7 +61,7 @@ submit2.onclick = function() {
     request.send('null');
 };
 
-var submit3 = document.getElementById('logout');
+var submit3 = document.getElementById('log');
 submit3.onclick = function() {
     console.log('logout');
     var request = new XMLHttpRequest();
