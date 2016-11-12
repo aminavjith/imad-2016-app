@@ -23,7 +23,7 @@ submit1.onclick = function() {
                 element.parentNode.removeChild(element);
 
                 var submit3 = document.createElement("button");
-                button.innerHTML = "Do Something";
+                submit3.innerHTML = "Do Something";
                /*var listing = document.getElementById('login');
                var loggedIn =` <u> You are successfully logged in</u>
                 <br>
