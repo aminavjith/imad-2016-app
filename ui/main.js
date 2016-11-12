@@ -1,7 +1,7 @@
 
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
-    console.log('here');
+    console.log('login');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
@@ -31,10 +31,11 @@ submit1.onclick = function() {
 
 var submit2 = document.getElementById('register');
 submit2.onclick = function() {
-    console.log('here');
+    console.log('register');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
+            console.log('back in main');
             if (request.status === 200)
             {
                alert('Registered successfully.');
