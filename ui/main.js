@@ -18,6 +18,7 @@ submit1.onclick = function() {
                 <br>
                 <br>`;
                 listing.innerHTML = loggedIn;
+                var submit3 = document.getElementById('log');
             }
             else if(request.status === 403)
             {
@@ -61,7 +62,7 @@ submit2.onclick = function() {
     request.send('null');
 };
 
-var submit3 = document.getElementById('log');
+
 submit3.onclick = function() {
     console.log('logout');
     var request = new XMLHttpRequest();
