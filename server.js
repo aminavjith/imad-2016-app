@@ -103,7 +103,7 @@ app.get('/submit-name/', function(req, res){
     res.send(JSON.stringify(names));
 });
 
-app.get('/logout', function (req, res){
+app.get('/logout/', function (req, res){
     delete req.session.auth;
     res.send('You are logged out.'); 
 });
