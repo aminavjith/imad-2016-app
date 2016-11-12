@@ -47,6 +47,7 @@ submit2.onclick = function() {
         }
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/register?user=' + username + '||' + password, true);
+    request.send('null');
 };
 
 
