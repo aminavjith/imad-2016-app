@@ -1,5 +1,5 @@
 
-            
+            var submit3=0;
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
     console.log('login');
