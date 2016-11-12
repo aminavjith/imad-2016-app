@@ -72,8 +72,8 @@ app.get('/submit-comment/', function(req, res){
 
 app.get('/register/', function(req, res){
     console.log('server');
-    var user = req.query.user;
-    var details = user.split('||');
+    var username = req.query.username;
+    var details = username.split('||');
     var username = details[0].value;
     var password = details[1].value;
     console.log(username);
