@@ -11,7 +11,6 @@ submit1.onclick = function() {
                console.log('User logged in.');
                alert('Logged in successfully.');
                var listing = document.getElementById('login');
-               
                var loggedIn =` <u> You are successfully logged in</u>
                 <br>
                 <button type="button" id="logout">Logout</button>
@@ -62,6 +61,35 @@ submit2.onclick = function() {
     request.send('null');
 };
 
+var submit3 = document.getElementById('logout');
+submit3.onclick = function() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            console.log('back in main');
+            if (request.status === 200)
+            {
+               var listing = document.getElementById('login');
+               var logIn =`<u> Sign in to be able to comment: </u>
+                            <br>
+                            <input type="text" id="username" placeholder="username"/><br>
+                            <input type="password" id="password"/><br>
+                            <button type ="button" id="register" value="Register">Register</button><br>
+                            <button type="button" id="submit-user" value="Login">Login</button>
+                            <br>
+                            <br>
+                            <br>`;
+                listing.innerHTML = logIn;
+            }
+            else 
+            {
+                alert('Not logged out');
+            }
+        }
+    };
+    request.open('GET','http://aminavjith.imad.hasura-app.io/logout', true);
+    request.send('null');
+};
 
 /*console.log('Loaded!');
 alert('From main.js.');
