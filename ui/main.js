@@ -31,6 +31,8 @@ submit1.onclick = function() {
 
 var submit2 = document.getElementById('register');
 submit2.onclick = function() {
+    var username = document.getElementById('username').value;
+    var password = document.getElementById('password').value;
     console.log('register');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
@@ -46,7 +48,7 @@ submit2.onclick = function() {
             }
         }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/register?username=' + username + '||' + password, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/register?username=' + userName + '||' + password, true);
     request.send('null');
 };
 
