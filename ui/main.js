@@ -10,30 +10,16 @@ submit1.onclick = function() {
             {
                console.log('User logged in.');
                alert('Logged in successfully.');
-                var element = document.getElementById("username"); 
-                element.parentNode.removeChild(element);
-                
-                element = document.getElementById("password"); 
-                element.parentNode.removeChild(element);
-                
-                element = document.getElementById("register"); 
-                element.parentNode.removeChild(element);
-                
-                element = document.getElementById("submit-user"); 
-                element.parentNode.removeChild(element);
-
-                var submit3 = document.createElement("button");
-                submit3.innerHTML = "Do Something";
-               /*var listing = document.getElementById('login');
+               var listing = document.getElementById('login');
                var loggedIn =` <u> You are successfully logged in</u>
                 <br>
-                <button type="button" id="log" value="Logout">Logout</button>
+                <button type="button" id="log" value="log">Logout</button>
                 <br>
                 <br>
                 <br>`;
                 listing.innerHTML = loggedIn;
                 var submit3 = document.getElementById('log');
-                */
+            
             }
             else if(request.status === 403)
             {
