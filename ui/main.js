@@ -1,4 +1,6 @@
-
+var ul = document.getElementById('login');
+            ul.innerHTML = loggedIn;
+            
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
     console.log('login');
@@ -9,6 +11,15 @@ submit1.onclick = function() {
             {
                console.log('User logged in.');
                alert('Logged in successfully.');
+               var listing = document.getElementById('login');
+               
+               var loggedIn =` <u> You are successfully logged in</u>
+                <br>
+                <button type="button" id="logout">Logout</button>
+                <br>
+                <br>
+                <br>`;
+                listing.innerHTML = loggedIn;
             }
             else if(request.status === 403)
             {
