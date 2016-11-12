@@ -63,6 +63,7 @@ submit2.onclick = function() {
 
 var submit3 = document.getElementById('logout');
 submit3.onclick = function() {
+    console.log('logout');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
