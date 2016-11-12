@@ -71,7 +71,7 @@ app.get('/submit-comment/', function(req, res){
 });
 
 app.get('/register/', function(req, res){
-    console.log(server);
+    console.log('server');
     var user = req.query.user;
     var details = user.split('||');
     var username = details[0].value;
