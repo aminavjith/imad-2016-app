@@ -73,8 +73,10 @@ app.get('/submit-comment/', function(req, res){
 app.get('/register/', function(req, res){
     var user = req.query.user;
     var details = user.split('||');
-    var username = details[0];
-    var password = details[1];
+    var username = details[0].value;
+    var password = details[1].value;
+    console.log(username);
+    console.log(password);
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password, salt);
     pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username,dbString], function(err, result){
