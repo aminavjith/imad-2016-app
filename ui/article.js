@@ -17,7 +17,7 @@ request.onreadystatechange = function(){
                 for (var i = 0; i < names.length; i++ ){
                     splitter = names[i];
                     var pairs = splitter.split('||');
-                    list += '<li> Comment:' + pairs[0] + '</li>';
+                    list += '<li>' + pairs[0] + '</li>';
                     list += '<li> @' + pairs[1] + '</li><br>';
             }
             var ul = document.getElementById('listing');
