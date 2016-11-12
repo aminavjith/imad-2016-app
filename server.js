@@ -74,8 +74,8 @@ app.get('/register/', function(req, res){
     console.log('server');
     var username = req.query.username;
     var details = username.split('||');
-    var username = details[0].value;
-    var password = details[1].value;
+    var username = details[0];
+    var password = details[1];
     console.log(username);
     console.log(password);
     var salt = crypto.randomBytes(128).toString('hex');
@@ -86,6 +86,20 @@ app.get('/register/', function(req, res){
         }
         else{
             res.send('Username: ' + username + ' created successfully');
+        }
+    });
+});
+
+app.get('/user-name', function (req, res){
+    var username = req.body.username;
+    var password = req.body.password;
+    var salt = crypto.randomBytes(128).toString('hex');
+    var dbString = hash(password, salt);
+    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username,dbString], function(err, result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            res.send('Username: ' + username + 'created successfully');
         }
     });
 });
@@ -133,19 +147,6 @@ app.get('/hash/:input', function (req, res) {
   res.send(hashedString);
 });
 
-app.get('/user-name', function (req, res){
-    var username = req.body.username;
-    var password = req.body.password;
-    var salt = crypto.randomBytes(128).toString('hex');
-    var dbString = hash(password, salt);
-    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username,dbString], function(err, result){
-        if(err){
-            res.status(500).send(err.toString());
-        }else{
-            res.send('Username: ' + username + 'created successfully');
-        }
-    });
-});
 
 app.post('/login', function (req, res){
     var username = req.body.username;
