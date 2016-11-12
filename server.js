@@ -76,7 +76,7 @@ app.get('/register/', function(req, res){
     var details = username.split('||');
     username = details[0];
     var password = details[1];
-    alert(password);
+   
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password, salt);
     pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username, password], function(err, result){
