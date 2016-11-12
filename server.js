@@ -63,13 +63,6 @@ function hash(input, salt){
     return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
 }
 
-var comments = [];
-app.get('/submit-comment/', function(req, res){
-    var comment = req.query.comment;
-    comments.push(comment);
-    res.send(JSON.stringify(comments));
-});
-
 app.get('/register/', function(req, res){
     console.log('server');
     var username = req.query.username;
@@ -181,6 +174,13 @@ app.get('/check-login', function (req, res){
     {
         res.send('You are not logged in.');
     }
+});
+
+var comments = [];
+app.get('/submit-comment/', function(req, res){
+    var comment = req.query.comment;
+    comments.push(comment);
+    res.send(JSON.stringify(comments));
 });
 
 app.get('/', function (req, res) {
