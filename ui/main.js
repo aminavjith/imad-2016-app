@@ -19,6 +19,7 @@ submit1.onclick = function() {
                 <br>`;
                 listing.innerHTML = loggedIn;
                 var submit3 = document.getElementById('log');
+                
             }
             else if(request.status === 403)
             {
