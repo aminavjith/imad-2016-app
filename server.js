@@ -84,7 +84,7 @@ app.get('/register/', function(req, res){
             res.status(500).send(err.toString());
         }
         else{
-            res.send('Username: ' + user1 + ' created successfully');
+            res.send('Username: ' + username + ' created successfully');
         }
     });
 });
