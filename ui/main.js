@@ -46,7 +46,7 @@ submit2.onclick = function() {
             }
         }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/register?' + username + '||' + password, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/register?username=' + username + '||' + password, true);
     request.send('null');
 };
 
