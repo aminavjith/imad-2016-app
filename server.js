@@ -74,12 +74,12 @@ app.get('/register/', function(req, res){
     console.log('server');
     var username = req.query.username;
     var details = username.split('||');
-    var user1 = details[0];
+    username = details[0];
     var password = details[1];
     alert(password);
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password, salt);
-    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [user1,dbString], function(err, result){
+    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username, password], function(err, result){
         if(err){
             res.status(500).send(err.toString());
         }
@@ -94,7 +94,7 @@ app.get('/user-name', function (req, res){
     var password = req.body.password;
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password, salt);
-    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username,password], function(err, result){
+    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username, dbString], function(err, result){
         if(err){
             res.status(500).send(err.toString());
         }else{
