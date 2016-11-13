@@ -11,11 +11,7 @@ submit1.onclick = function() {
                console.log('User logged in.');
                alert('Logged in successfully.');
                var listing = document.getElementById('login');
-               var loggedIn =` <u> You are successfully logged in</u>
-                <br>
-                <button type="button" id="log" value="log">Logout</button>
-                <br>
-                <br>
+               var loggedIn =` <p> You are successfully logged in</p>
                 <br>`;
                 listing.innerHTML = loggedIn;
                 var submit3 = document.getElementById('log');
@@ -39,6 +35,15 @@ submit1.onclick = function() {
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify({username: username, password: password}));
 };
+
+function logoutTemplate(){
+    var element = document.createElement("button");
+    element.setAttribute("type", "button");
+    element.setAttribute("value", "Logout");
+    element.setAttribute("name", "button3");
+    element.setAttribute("onclick", "foo()");
+    document.flotta.appendChild(element);
+}
 
 var submit2 = document.getElementById('register');
 submit2.onclick = function() {
