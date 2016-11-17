@@ -34,7 +34,7 @@ function createArticleTemplate(data){
         <title>
           ${title}
         </title>
-        <link  href="style.css" rel="stylesheet" />
+        <link  href="/ui/style.css" rel="stylesheet" />
         <link  href="favicon.ico" rel="icon" />
       </head>
       <body>
