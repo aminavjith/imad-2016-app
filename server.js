@@ -78,7 +78,7 @@ function createArticleTemplate(data){
 
       <script type="text/javascript" src="/ui/main.js">
       </script>
-     </html>`
+     </html>`;
     return HTMLTemplate;
 }
 
