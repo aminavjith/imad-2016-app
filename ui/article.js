@@ -1,4 +1,5 @@
 var currentArticle = window.location.pathname.split('/')[2];
+loadForm();
 function loadForm(){
     console.log('Are you logged in?');
     var request = new XMLHttpRequest();
