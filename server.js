@@ -22,7 +22,8 @@ app.use(session({
     cookie: {maxAge: 1000 * 60 *60 *24 *30}
 }));
 
-function createTemplate(data){
+
+function createArticleTemplate(data){
     var title=data.title;
     var heading=data.heading;
     var date=data.date;
@@ -33,43 +34,66 @@ function createTemplate(data){
         <title>
           ${title}
         </title>
-        <link  href="/ui/style.css" rel="stylesheet" />
-        <link  href="/favicon.ico" rel="icon" />
+        <link  href="style.css" rel="stylesheet" />
+        <link  href="favicon.ico" rel="icon" />
       </head>
-      <div class="header">${heading}
-        <br>
-        <a href="/">Home
-        </a>
-        <hr>
+      <body>
+        <div class = "header">
+        <div id="text1" class="header"> Learning to create webapps
+        </div>
+
+        <body1 id="login" style= "display:none;">
+        <div id="user" class="header"> Username <br>
+          <input placeholder="Username" name="name" type="name"/> <br>
+        </div>
+        <div id="password" class="header"> Password: <br>
+          <input placeholder="Password" name="password" type="password" />
+        </div>
+          <input type="button" id="submit-user" class="submit1" value="Login"/>
+          <input type="button" id="register" class="submit2" value="Register"/>
+        </body1>
+
+        <body2 id="logout" >
+          <div id="user" class="header"> You are now signed in.
+            <input type="button" id="logout-user" class="submit3" value="Logout"/>
+          </div>
+        </body2>
       </div>
+      <br>
       <div class="bodyx">
+        <a href="/" text-align="right">Home</a>
+        <h3>${heading}</h3>
+        <br>
+        <hr>
+
         ${date.toDateString()}<br>
         ${content}
        <hr>
-      </div>
       <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
       <input type="Submit" id="submit-comment"/>
       <ul id="listing">
       </ul>
-      
-      <script type="text/javascript" src="/ui/article.js">
+      <body>
+
+      <script type="text/javascript" src="/ui/main.js">
       </script>
-     </html>`;
+     </html>`
     return HTMLTemplate;
 }
 
-function hash(input, salt){    
+function hash(input, salt){
     var hashed = crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
     return ["pbkdf2", "10000", salt, hashed.toString('hex')].join('$');
 }
 
+//endpoint to create new user
 app.get('/register/', function(req, res){
     console.log('server');
     var username = req.query.username;
     var details = username.split('||');
     username = details[0];
     var password = details[1];
-   
+
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password, salt);
     pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username, dbString], function(err, result){
@@ -82,6 +106,7 @@ app.get('/register/', function(req, res){
     });
 });
 
+//endpoint to create new user
 app.get('/user-name', function (req, res){
     var username = req.body.username;
     var password = req.body.password;
@@ -103,11 +128,13 @@ app.get('/submit-name/', function(req, res){
     res.send(JSON.stringify(names));
 });
 
+//endpoint to logout of the session
 app.get('/logout/', function (req, res){
     delete req.session.auth;
-    res.send('You are logged out.'); 
+    res.send('You are logged out.');
 });
 
+//enpoint to retrieve article
 app.get('/articles/:articleName', function(req, res){
     //var articleName= req.params.articleName;
     pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function(err, result){
@@ -117,7 +144,7 @@ app.get('/articles/:articleName', function(req, res){
             res.status(404).send('File Not Found');
         } else {
             var articleData = result.rows[0];
-            res.send(createTemplate(articleData));
+            res.send(createArticleTemplate(articleData));
         }
     });
 });
@@ -139,11 +166,10 @@ app.get('/hash/:input', function (req, res) {
   res.send(hashedString);
 });
 
-
+//endpoint to login to the app
 app.post('/login', function (req, res){
     var username = req.body.username;
     var password = req.body.password;
-    
     pool.query('SELECT * FROM "usernames" WHERE username = $1;', [username], function(err, result){
         if(err){
             res.status(500).send(err.toString());
@@ -156,19 +182,20 @@ app.post('/login', function (req, res){
                 var hashedPassword = hash(password, salt);
                 if(dbString === hashedPassword){
                     req.session.auth = {userId: result.rows[0].id};
-                    res.send('Logged in successfully'); 
+                    res.send('Logged in successfully');
                 } else{
-                    res.send('Invalid creds.'); 
+                    res.send('Invalid creds.');
                 }
             }
         }
     });
 });
 
+//endpoint to check session
 app.get('/check-login', function (req, res){
     if(req.session && req.session.auth && req.session.auth.userId)
     {
-        res.send('You are logged in with '+ req.session.auth.userId.toString()); 
+        res.send('You are logged in with '+ req.session.auth.userId.toString());
     }
     else
     {
@@ -176,6 +203,7 @@ app.get('/check-login', function (req, res){
     }
 });
 
+//end point to append comments
 var comments = [];
 app.get('/submit-comment/', function(req, res){
     var comment = req.query.comment;
