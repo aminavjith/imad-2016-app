@@ -16,7 +16,9 @@ function loadForm(){
             }
         }
     };
-    request.get('GET','http://aminavjith.imad.hasura-app.io/check-login', true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/check-login', true);
+    request.send('null');
+    
 }
 
 function displayForm(){
