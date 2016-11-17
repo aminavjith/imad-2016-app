@@ -39,26 +39,26 @@ function createArticleTemplate(data){
       </head>
       <body>
         <div class = "header">
-  <div id="text1" class="header"> Learning to create webapps
-  </div>
-
-  <body1 id="login"  >
-
-    <div id="userarea" class="header"> Username <br>
-        <input placeholder="Username" id="username" type="name"/> <br>
-    </div>
-    <div id="passwordarea" class="header"> Password: <br>
-        <input placeholder="Password" id="password" type="password" />
-    </div>
-        <input type="button" id="submit-user" class="submit1" value="Login"/>
-        <input type="button" id="register" class="submit2" value="Register"/>
-  </body1>
-
-  <body2 id="logout" style= "display:none;">
-    <div id="userarea" class="header"> You are now signed in. <br>
-        <input type="button" id="logout-user" class="submit3" value="Log Out"/>
-    </div>
-  </body2>
+      <div id="text1" class="header"> Learning to create webapps
+      </div>
+    
+      <body1 id="login"  >
+    
+        <div id="userarea" class="header"> Username <br>
+            <input placeholder="Username" id="username" type="name"/> <br>
+        </div>
+        <div id="passwordarea" class="header"> Password: <br>
+            <input placeholder="Password" id="password" type="password" />
+        </div>
+            <input type="button" id="submit-user" class="submit1" value="Login"/>
+            <input type="button" id="register" class="submit2" value="Register"/>
+      </body1>
+    
+      <body2 id="logout" style= "display:none;">
+        <div id="userarea" class="header"> You are now signed in. <br>
+            <input type="button" id="logout-user" class="submit3" value="Log Out"/>
+        </div>
+      </body2>
       <br>
       <div class="bodyx">
         <a href="/" text-align="right">Home</a>
@@ -73,7 +73,7 @@ function createArticleTemplate(data){
       <input type="Submit" id="submit-comment"/>
       <ul id="listing">
       </ul>
-      <body>
+      </body>
 
       <script type="text/javascript" src="/ui/main.js">
       </script>
