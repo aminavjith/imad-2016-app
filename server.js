@@ -70,13 +70,12 @@ function createArticleTemplate(data){
         ${date.toDateString()}<br>
         ${content}
        <hr>
-      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
-      <input type="Submit" id="submit-comment"/>
+      <textarea id="commentform"></textarea>
       <ul id="listing">
       </ul>
       </body>
 
-      <script type="text/javascript" src="/ui/main.js">
+      <script type="text/javascript" src="/ui/article.js">
       </script>
      </html>`;
     return HTMLTemplate;
@@ -192,7 +191,7 @@ app.post('/login', function (req, res){
     });
 });
 
-//endpoint to check session
+//endpoint to check login
 app.get('/check-login', function (req, res){
     if(req.session && req.session.auth && req.session.auth.userId)
     {
