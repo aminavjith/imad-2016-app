@@ -59,6 +59,7 @@ function createArticleTemplate(data){
             <input type="button" id="logout-user" class="submit3" value="Log Out"/>
         </div>
       </body2>
+      </div>
       <br>
       <div class="bodyx">
         <a href="/" text-align="right">Home</a>
