@@ -1,3 +1,28 @@
+var currentArticle = window.location.pathname.split('/')[2];
+function loadForm(){
+    console.log('Are you logged in?');
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            if (request.status === 200)
+            {
+               console.log('User logged in.');
+               displayForm();
+            }
+            else
+            {
+                alert('Please login to be able toenter comments');
+            }
+        }
+    };
+    request.get('POST','http://aminavjith.imad.hasura-app.io/check-login', true);
+}
+function displayForm(){
+    var dis= `<textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
+      <input type="Submit" id="submit-comment"/>`;
+    document.getElementById('commentform').innerHTML = dis;
+}
+
 //to log in
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
