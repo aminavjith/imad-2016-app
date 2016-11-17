@@ -42,7 +42,7 @@ function createArticleTemplate(data){
         <div id="text1" class="header"> Learning to create webapps
         </div>
 
-        <body1 id="login" style= "display:none;">
+        <body1 id="login">
         <div id="user" class="header"> Username <br>
           <input placeholder="Username" name="name" type="name"/> <br>
         </div>
@@ -53,7 +53,7 @@ function createArticleTemplate(data){
           <input type="button" id="register" class="submit2" value="Register"/>
         </body1>
 
-        <body2 id="logout" >
+        <body2 id="logout" style="display:"none">
           <div id="user" class="header"> You are now signed in.
             <input type="button" id="logout-user" class="submit3" value="Logout"/>
           </div>
