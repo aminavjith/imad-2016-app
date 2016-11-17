@@ -70,7 +70,7 @@ function createArticleTemplate(data){
         ${date.toDateString()}<br>
         ${content}
        <hr>
-      <textarea id="commentform"></textarea>
+      <x id="commentform"></x>
       <ul id="listing">
       </ul>
       </body>
