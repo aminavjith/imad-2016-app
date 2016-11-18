@@ -1,5 +1,7 @@
 var currentArticle = window.location.pathname.split('/')[2];
 loadForm();
+
+
 function loadForm(){
     console.log('Are you logged in?');
     var request = new XMLHttpRequest();
@@ -119,6 +121,33 @@ function hideform() {
     document.getElementById("commentform").style.display = "none";
 }
 
+//to load comment
+function loadComments() {
+    alert('load comments');
+    var request = new XMLHttpRequest();
+    
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE)
+            if (request.status === 200)
+                {
+                    var coomentList = request.responseText;
+                    commentList = JSON.parse(commentList);
+                    var splitter = '';
+                    var list = '';
+                    for (var i = 0; i < commentList.length; i++ ){
+                        splitter = names[i];
+                        var pairs = splitter.split('||');
+                        list += '<li>' + pairs[0] + '</li>';
+                        list += '<li> @' + pairs[1] + '</li><br>';
+                }
+                var ul = document.getElementById('listing');
+                ul.innerHTML = list;
+            }
+        };
+        request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
+        request.send(null);
+}
+
 //to submit comment
 var submit = document.getElementById('submit-comment');
 submit.onclick = function() {
@@ -148,4 +177,6 @@ request.onreadystatechange = function(){
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + new Date(), true);
     request.send(null);
 };
+
+
 
