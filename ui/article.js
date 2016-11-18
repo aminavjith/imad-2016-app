@@ -171,7 +171,7 @@ submit4.onclick = function() {
             alert('Not able to save comment.');
         }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + currentArticle, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comments?comment=' + comment + '||' + currentArticle, true);
     request.send(null);
     }
 };
