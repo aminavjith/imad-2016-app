@@ -1,7 +1,35 @@
 var currentArticle = window.location.pathname.split('/')[2];
+loadComments();
 loadForm();
 
+//to load comments
+function loadComments() {
+    alert('load comments');
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE)
+            {
+            if (request.status === 200)
+                {
+                    var commentList = request.responseText;
+                    commentList = JSON.parse(commentList);
+                    var list = '';
+                    for (var i = 0; i < commentList.length; i++ ){
+                        list += `<div class="comment">
+                        <p>${commentList[i].comment}</p>
+                        <p>${commentsData[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
+                        </div>`;
+                        }
+                    var ul = document.getElementById('listing');
+                    ul.innerHTML = list;
+                }
+            }
+    };
+    request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
+    request.send(null);
+}
 
+//load Comment edit box to be able to enter comments.
 function loadForm(){
     console.log('Are you logged in?');
     var request = new XMLHttpRequest();
@@ -122,60 +150,30 @@ function hideform() {
     document.getElementById("commentform").style.display = "none";
 }
 
-//to load comment
-function loadComments() {
-    alert('load comments');
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE)
-            if (request.status === 200)
-                {
-                    var commentList = request.responseText;
-                    commentList = JSON.parse(commentList);
-                    var list = '';
-                    for (var i = 0; i < commentList.length; i++ ){
-                        list += `<div class="comment">
-                        <p>${commentList[i].comment}</p>
-                        <p>${commentsData[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
-                        </div>`;
-                        
-                }
-                var ul = document.getElementById('listing');
-                ul.innerHTML = list;
-            }
-        };
-        request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
-        request.send(null);
-}
 
-//to submit comment
-var submit = document.getElementById('submit-comment');
-submit.onclick = function() {
+
+//to submit comment new
+var submit4 = document.getElementById('submit-comment');
+submit4.onclick = function() {
     alert('submitting comment');
-    var inputComment = document.getElementById('comment');
-    var comment = inputComment.value;
-    //inputName.value = '';
-var request = new XMLHttpRequest();
-request.onreadystatechange = function(){
-    if(request.readyState === XMLHttpRequest.DONE)
-        if (request.status === 200)
-            {
-                var names = request.responseText;
-                names = JSON.parse(names);
-                var splitter = '';
-                var list = '';
-                for (var i = 0; i < names.length; i++ ){
-                    splitter = names[i];
-                    var pairs = splitter.split('||');
-                    list += '<li>' + pairs[0] + '</li>';
-                    list += '<li> @' + pairs[1] + '</li><br>';
-            }
-            var ul = document.getElementById('listing');
-            ul.innerHTML = list;
+    var inputComment = document.getElementById('comment').value;
+    if(inputComment === ''){
+        alert('Please enter a comment.');
+    }
+    else{
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE)
+        if (request.status === 200){
+            loadComments();
+        }
+        else{
+            alert('Not able to save comment.');
         }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + new Date(), true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comment?comment=' + comment + '||' + currentArticle, true);
     request.send(null);
+    }
 };
 
 
