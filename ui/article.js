@@ -159,22 +159,22 @@ submit4.onclick = function() {
     var inputComment = document.getElementById('comment').value;
     if(inputComment === ''){
         alert('Please enter a comment.');
-    }
-    else{
-        var request = new XMLHttpRequest();
-        request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE)
-        if (request.status === 200){
-            loadComments();
         }
         else{
-            alert('Not able to save comment.');
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function(){
+                if(request.readyState === XMLHttpRequest.DONE)
+                if (request.status === 200){
+                    loadComments();
+                    }
+                else{
+                    alert('Not able to save comment.');
+                    }
+                }
         }
-    };
     request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comments?comment=' + comment + '||' + currentArticle, true);
     request.send(null);
-    }
-};
+    };
 
 
 
