@@ -70,7 +70,7 @@ function createArticleTemplate(data){
         ${date.toDateString()}<br>
         ${content}
        <hr>
-      <x id="commentform">
+      <x id="commentform" display="none>
       <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
       <input type="Submit" id="submit-comment"/></x>
       <ul id="listing">
@@ -195,14 +195,17 @@ app.post('/login', function (req, res){
 
 //endpoint to check login
 app.get('/check-login', function (req, res){
-    if(req.session && req.session.auth && req.session.auth.userId)
-    {
-        res.send('You are logged in with '+ req.session.auth.userId.toString());
-    }
-    else
-    {
-        res.send('You are not logged in.');
-    }
+    if(req.session && req.session.auth && req.session.auth.userId){
+        pool.query('SELECT * FROM "user" WHERE id = $1', [req.session.auth.userId], function (err, result) {
+               if (err) {
+              res.status(500).send(err.toString());
+           } else {
+              res.send(result.rows[0].username);    
+           }
+       });
+   } else {
+       res.status(400).send('You are not logged in');
+   }
 });
 
 //end point to append comments
