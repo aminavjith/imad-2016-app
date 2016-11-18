@@ -17,7 +17,7 @@ function loadComments() {
                     for (var i = 0; i < commentList.length; i++ ){
                         var time = new Date(commentList[i].timestamp);
                         list += `<div class="comment">
-                        <p>${commentList[i].comment}</p>
+                        <p>${commentList[i].comment.value}</p>
                         <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
                         </div>`;
                         }
