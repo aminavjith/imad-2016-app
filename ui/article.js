@@ -8,23 +8,17 @@ function loadForm(){
             if (request.status === 200)
             {
                console.log('User logged in.');
-               displayForm();
+               displayform();
             }
             else
             {
                 alert('Please login to be able to enter comments');
+                hideform();
             }
         }
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/check-login', true);
     request.send('null');
-    
-}
-
-function displayForm(){
-    var dis= `<textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
-      <input type="Submit" id="submit-comment"/>`;
-    document.getElementById('x').innerHTML = dis;
 }
 
 //to log in
@@ -113,6 +107,14 @@ function display1() {
 function display2() {
     document.getElementById("login").style.display = "inline";
     document.getElementById("logout").style.display = "none";
+}
+
+function displayform() {
+    document.getElementById("commentform").style.display = "inline";
+}
+
+function hideform() {
+    document.getElementById("commentform").style.display = "none";
 }
 
 //to submit comment
