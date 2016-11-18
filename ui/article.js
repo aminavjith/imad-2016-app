@@ -172,7 +172,7 @@ submit4.onclick = function() {
                     }
                 }
         }
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comments?comment=' + comment + '||' + currentArticle, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comments?comment=' + comment + '||' + currentArticle + '||' + new Date(), true);
     request.send(null);
     };
 
