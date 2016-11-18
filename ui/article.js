@@ -23,18 +23,6 @@ function loadForm(){
     request.send('null');
 }
 
-function displayComments(data){
-    var comment = data.comment;
-    var time = data.time;
-    var username = data.username;
-    var commentTemplate = `<div class="comment">
-                        <p>${escapeHTML(commentsData[i].comment)}</p>
-                        <div class="commenter">
-                            ${commentsData[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} 
-                        </div>
-                    </div>`;
-    return commentTemplate;
-}
 
 //to log in
 var submit1 = document.getElementById('submit-user');
