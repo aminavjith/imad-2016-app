@@ -51,6 +51,25 @@ function loadForm(){
     request.send('null');
 }
 
+//to display logout section after successful login
+function display1() {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("logout").style.display = "inline";
+}
+
+//to display login section after logging out
+function display2() {
+    document.getElementById("login").style.display = "inline";
+    document.getElementById("logout").style.display = "none";
+}
+
+function displayform() {
+    document.getElementById("commentform").style.display = "inline";
+}
+
+function hideform() {
+    document.getElementById("commentform").style.display = "none";
+}
 
 //to log in
 var submit1 = document.getElementById('submit-user');
@@ -130,28 +149,6 @@ submit3.onclick = function() {
     request.send('null');
 };
 
-//to display logout section after successful login
-function display1() {
-    document.getElementById("login").style.display = "none";
-    document.getElementById("logout").style.display = "inline";
-}
-
-//to display login section after logging out
-function display2() {
-    document.getElementById("login").style.display = "inline";
-    document.getElementById("logout").style.display = "none";
-}
-
-function displayform() {
-    document.getElementById("commentform").style.display = "inline";
-}
-
-function hideform() {
-    document.getElementById("commentform").style.display = "none";
-}
-
-
-
 //to submit comment new
 var submit4 = document.getElementById('submit-comment');
 submit4.onclick = function() {
@@ -172,7 +169,7 @@ submit4.onclick = function() {
                     }
                 }
         }
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comments?comment=' + comment + '||' + currentArticle + '||' + new Date(), true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comments?comment=' + inputComment + '||' + currentArticle, true);
     request.send(null);
     };
 
