@@ -71,8 +71,9 @@ function createArticleTemplate(data){
         ${content}
        <hr>
       <x id="commentform" display="none>
-      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
-      <input type="Submit" id="submit-comment"/></x>
+      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/><br>
+      <input type="Submit" id="submit-comment"/>
+      </x>
       <ul id="listing">
       </ul>
       </body>
