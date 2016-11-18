@@ -54,7 +54,7 @@ function createArticleTemplate(data){
             <input type="button" id="register" class="submit2" value="Register"/>
       </body1>
     
-      <body2 id="logout" style= "display:none;">
+      <body2 id="logout" style="display:none;">
         <div id="userarea" class="header"> You are now signed in. <br>
             <input type="button" id="logout-user" class="submit3" value="Log Out"/>
         </div>
@@ -70,7 +70,9 @@ function createArticleTemplate(data){
         ${date.toDateString()}<br>
         ${content}
        <hr>
-      <x id="commentform"></x>
+      <x id="commentform">
+      <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"></textarea><br>
+      <input type="Submit" id="submit-comment"/></x>
       <ul id="listing">
       </ul>
       </body>
