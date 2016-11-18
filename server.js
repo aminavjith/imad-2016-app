@@ -136,21 +136,36 @@ app.get('/logout/', function (req, res){
     res.send('You are logged out.');
 });
 
-//enpoint to retrieve article
+
+//endpoint to retrieve comments
 app.get('/articles/:articleName', function(req, res){
     //var articleName= req.params.articleName;
-    pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function(err, result){
+    pool.query("SELECT comments.*, usernames.username FROM comments, usernames, articles WHERE article.title = $1 ORDER BY timestamp DESC", [req.params.articleName], function(err, result){
         if (err) {
             res.status(500).send(err.toString());
         } else if (result.rows.length === 0){
-            res.status(404).send('File Not Found');
+            res.status(404).send('No comments posted.');
+        } else {
+            var articleData = result.rows;
+            res.send(JSON.stringify(articleData));
+        }
+    });
+});
+
+//endpoint to retrieve article
+app.get('/articles/:articleName', function(req, res){
+    //var articleName= req.params.articleName;
+    pool.query("SELECT * FROM articles WHERE title = $1", [req.params.articleName], function(err, result){
+        if (err) {
+            res.status(500).send(err.toString());
+        } else if (result.rows.length === 0){
+            res.status(404).send('File Not Found.');
         } else {
             var articleData = result.rows[0];
             res.send(createArticleTemplate(articleData));
         }
     });
 });
-
 /*app.get('/submit-comments/:s, function(req, res){
         var comment = req.body.comment;
         var timestamp = timestamp();
@@ -210,7 +225,7 @@ app.get('/check-login', function (req, res){
 
 //end point to append comments
 var comments = [];
-app.get('/submit-comment/', function(req, res){
+app.get('/submit-comment/:articleName', function(req, res){
     var comment = req.query.comment;
     comments.push(comment);
     res.send(JSON.stringify(comments));
