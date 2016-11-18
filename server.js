@@ -157,11 +157,10 @@ app.get('/submit-comments/', function(req, res){
     var details = comment.split('||');
     var commentValue = details[0];
     var article = details[1];
-    var timestamp = timestamp();
     var d = new Date();
     var n = d.getTime();
-    pool.query('INSERT INTO "comments" (article-id, comment, user-id, timestamp) VALUES ($1, $2, $3, $4);', [comment,timestamp], function(err, result){
-        if(err){
+    pool.query('INSERT INTO "comments" (article-id, comment, user-id, timestamp) VALUES ($1, $2, $3, $4);', [article, commentValue, req.session.auth.userId, timestamp], function(err, result){
+        if (err){
             res.status(500).send(err.toString());
         }
         else{
