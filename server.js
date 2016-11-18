@@ -125,7 +125,7 @@ app.get('/logout/', function (req, res){
 //endpoint to retrieve comments
 app.get('/load-comments/:articleName', function(req, res){
     //var articleName= req.params.articleName;
-    pool.query("SELECT comments, usernames.username FROM comments, usernames, article WHERE comments.user-id = usernames.id AND comments.article-id=article.id AND article.title = $1 ORDER BY timestamp DESC", [req.params.articleName], function(err, result){
+    pool.query("SELECT comments, usernames.username FROM comments, usernames, article WHERE comments.user_id = usernames.id AND comments.article_id=article.id AND article.title = $1 ORDER BY timestamp DESC", [req.params.articleName], function(err, result){
         if (err) {
             res.status(500).send(err.toString());
         } else if (result.rows.length === 0){
