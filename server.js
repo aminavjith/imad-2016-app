@@ -125,7 +125,7 @@ app.get('/logout/', function (req, res){
 //endpoint to retrieve comments
 app.get('/load-comments/:articleName', function(req, res){
     //var articleName= req.params.articleName;
-    pool.query("SELECT comments.*, usernames.username FROM comments, usernames, articles WHERE article.title = $1 ORDER BY timestamp DESC", [req.params.articleName], function(err, result){
+    pool.query("SELECT comments.*, usernames.username FROM comments, usernames, article WHERE article.title = $1 ORDER BY timestamp DESC", [req.params.articleName], function(err, result){
         if (err) {
             res.status(500).send(err.toString());
         } else if (result.rows.length === 0){
@@ -159,7 +159,7 @@ app.get('/submit-comments/', function(req, res){
     var commentValue = details[0];
     var article = details[1];
     var date = new Date();
-    pool.query('INSERT INTO "comments" (article-id, comment, user-id, timestamp) VALUES ($1, $2, $3, $4);', [article, commentValue, req.session.auth.userId, date], function(err, result){
+    pool.query('INSERT INTO comments (article-id, comment, user-id, timestamp) VALUES ($1, $2, $3, $4);', [article, commentValue, req.session.auth.userId, date], function(err, result){
         if (err){
             res.status(500).send(err.toString());
         }
@@ -202,7 +202,7 @@ app.post('/login', function (req, res){
 //endpoint to check login
 app.get('/check-login', function (req, res){
     if(req.session && req.session.auth && req.session.auth.userId){
-        pool.query('SELECT * FROM "user" WHERE id = $1', [req.session.auth.userId], function (err, result) {
+        pool.query('SELECT * FROM "usernames" WHERE id = $1', [req.session.auth.userId], function (err, result) {
                if (err) {
               res.status(500).send(err.toString());
            } else {
