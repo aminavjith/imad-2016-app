@@ -4,7 +4,7 @@ loadForm();
 
 //to load comments
 function loadComments() {
-    alert('load comments');
+    console.log('load comments');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE)
@@ -13,11 +13,12 @@ function loadComments() {
                 {
                     var commentList = request.responseText;
                     commentList = JSON.parse(commentList);
+                    var time = new Date(commentList[i].timestamp);
                     var list = '';
                     for (var i = 0; i < commentList.length; i++ ){
                         list += `<div class="comment">
                         <p>${commentList[i].comment}</p>
-                        <p>${commentsList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
+                        <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
                         </div>`;
                         }
                     var ul = document.getElementById('listing');
