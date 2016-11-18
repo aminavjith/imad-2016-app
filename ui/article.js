@@ -23,6 +23,19 @@ function loadForm(){
     request.send('null');
 }
 
+function displayComments(data){
+    var comment = data.comment;
+    var time = data.time;
+    var username = data.username;
+    var commentTemplate = `<div class="comment">
+                        <p>${escapeHTML(commentsData[i].comment)}</p>
+                        <div class="commenter">
+                            ${commentsData[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} 
+                        </div>
+                    </div>`;
+    return commentTemplate;
+}
+
 //to log in
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
@@ -125,20 +138,19 @@ function hideform() {
 function loadComments() {
     alert('load comments');
     var request = new XMLHttpRequest();
-    
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE)
             if (request.status === 200)
                 {
-                    var coomentList = request.responseText;
+                    var commentList = request.responseText;
                     commentList = JSON.parse(commentList);
-                    var splitter = '';
                     var list = '';
                     for (var i = 0; i < commentList.length; i++ ){
-                        splitter = names[i];
-                        var pairs = splitter.split('||');
-                        list += '<li>' + pairs[0] + '</li>';
-                        list += '<li> @' + pairs[1] + '</li><br>';
+                        list += `<div class="comment">
+                        <p>${commentList[i].comment}</p>
+                        <p>${commentsData[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
+                        </div>`;
+                        
                 }
                 var ul = document.getElementById('listing');
                 ul.innerHTML = list;
