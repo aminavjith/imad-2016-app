@@ -95,7 +95,6 @@ app.get('/register/', function(req, res){
     var details = username.split('||');
     username = details[0];
     var password = details[1];
-
     var salt = crypto.randomBytes(128).toString('hex');
     var dbString = hash(password, salt);
     pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username, dbString], function(err, result){
@@ -104,21 +103,6 @@ app.get('/register/', function(req, res){
         }
         else{
             res.send('Username: ' + username + ' created successfully');
-        }
-    });
-});
-
-//endpoint to create new user
-app.get('/user-name', function (req, res){
-    var username = req.body.username;
-    var password = req.body.password;
-    var salt = crypto.randomBytes(128).toString('hex');
-    var dbString = hash(password, salt);
-    pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username, dbString], function(err, result){
-        if(err){
-            res.status(500).send(err.toString());
-        }else{
-            res.send('Username: ' + username + 'created successfully');
         }
     });
 });
@@ -138,7 +122,7 @@ app.get('/logout/', function (req, res){
 
 
 //endpoint to retrieve comments
-app.get('/articles/:articleName', function(req, res){
+app.get('/load-comments/:articleName', function(req, res){
     //var articleName= req.params.articleName;
     pool.query("SELECT comments.*, usernames.username FROM comments, usernames, articles WHERE article.title = $1 ORDER BY timestamp DESC", [req.params.articleName], function(err, result){
         if (err) {
@@ -152,7 +136,7 @@ app.get('/articles/:articleName', function(req, res){
     });
 });
 
-//endpoint to retrieve article
+//endpoint to display article
 app.get('/articles/:articleName', function(req, res){
     //var articleName= req.params.articleName;
     pool.query("SELECT * FROM articles WHERE title = $1", [req.params.articleName], function(err, result){
@@ -166,17 +150,25 @@ app.get('/articles/:articleName', function(req, res){
         }
     });
 });
-/*app.get('/submit-comments/:s, function(req, res){
-        var comment = req.body.comment;
-        var timestamp = timestamp();
-      pool.query('INSERT INTO "comments" (comment, timestamp) VALUES ($1, $2);', [comment,timestamp], function(err, result){
+
+//to save comment
+app.get('/submit-comments/', function(req, res){
+    var comment = req.query.comment;
+    var details = comment.split('||');
+    var commentValue = details[0];
+    var article = details[1];
+    var timestamp = timestamp();
+    var d = new Date();
+    var n = d.getTime();
+    pool.query('INSERT INTO "comments" (article-id, comment, user-id, timestamp) VALUES ($1, $2, $3, $4);', [comment,timestamp], function(err, result){
         if(err){
             res.status(500).send(err.toString());
-        }else{
+        }
+        else{
             res.send('Username: ' + username + 'created successfully');
         }
     });
-//}*/
+});
 
 app.get('/hash/:input', function (req, res) {
   hashedString = hash(req.params.input, 'this-is-some-random-string');
@@ -224,12 +216,12 @@ app.get('/check-login', function (req, res){
 });
 
 //end point to append comments
-var comments = [];
+/*var comments = [];
 app.get('/submit-comment/:articleName', function(req, res){
     var comment = req.query.comment;
     comments.push(comment);
     res.send(JSON.stringify(comments));
-});
+});*/
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
