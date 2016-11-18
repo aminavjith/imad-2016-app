@@ -33,6 +33,7 @@ submit1.onclick = function() {
                console.log('User logged in.');
                alert('Logged in successfully.');
                display1();
+               displayform();
             }
             else if(request.status === 403)
             {
@@ -86,6 +87,7 @@ submit3.onclick = function() {
             if (request.status === 200)
             {
               display2();
+              hideform();
             }
             else
             {
