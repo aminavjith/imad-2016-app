@@ -153,11 +153,9 @@ app.get('/articles/:articleName', function(req, res){
 });
 
 //to save comment
-app.get('/submit-comments/', function(req, res){
-    var comment = req.query.comment;
-    var details = comment.split('||');
-    var commentValue = details[0];
-    var article = details[1];
+app.post('/submit-comments/:articleName', function(req, res){
+    var article = req.param.articleName;
+    var comment = req.body.comment;
     var date = new Date();
     pool.query('INSERT INTO comments (article-id, comment, user-id, timestamp) VALUES ($1, $2, $3, $4);', [article, commentValue, req.session.auth.userId, date], function(err, result){
         if (err){
