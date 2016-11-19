@@ -31,33 +31,26 @@ function loadComments() {
     request.send(null);
 }
 
-function escapeHTML (text)
-{
-    var $text = document.createTextNode(text);
-    var $div = document.createElement('div');
-    $div.appendChild($text);
-    return $div.innerHTML;
-}
+
 //load Comment edit box to be able to enter comments.
-function loadForm(){
-    console.log('Are you logged in?');
+function loadLogin () {
+    // Check if the user is already logged in
     var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE){
-            if (request.status === 200)
-            {
-               console.log('User logged in.');
-               displayform();
-            }
-            else
-            {
-                alert('Please login to be able to enter comments');
-                hideform();
-            }
+    request.onreadystatechange = function () {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+             console.log('User logged in.');
+             displayform();
+          }
+          else
+          {
+              alert('Please login to be able to enter comments');
+              hideform();
+          }
         }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/check-login', true);
-    request.send('null');
+    request.open('GET', 'http://aminavjith.imad.hasura-app.io/check-login', true);
+    request.send(null);
 }
 
 //to display logout section after successful login
