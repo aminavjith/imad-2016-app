@@ -161,7 +161,6 @@ submit3.onclick = function() {
 //to submit comment new
 var submit4 = document.getElementById('submit-comment');
 submit4.onclick = function() {
-    alert('submitting comment');
     var inputComment = document.getElementById('comment').value;
     if(inputComment === ''){
         alert('Please enter a comment.');
@@ -169,17 +168,18 @@ submit4.onclick = function() {
         else{
             var request = new XMLHttpRequest();
             request.onreadystatechange = function(){
-                if(request.readyState === XMLHttpRequest.DONE)
-                if (request.status === 200){
-                    loadComments();
-                    }
-                else{
-                    alert('Not able to save comment.');
-                    }
-                }
-        }
-    request.open('GET','http://aminavjith.imad.hasura-app.io/submit-comments?comment=' + inputComment + '||' + currentArticle, true);
-    request.send(null);
+                if(request.readyState === XMLHttpRequest.DONE){
+                    if (request.status === 200){
+                        loadComments();
+                        }
+                    else{
+                        alert('Not able to save comment.');
+                        }
+                };
+        }};
+    request.open('POST','http://aminavjith.imad.hasura-app.io/submit-comment/' + currentArticle, true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringify({comment: comment}));
     };
 
 
