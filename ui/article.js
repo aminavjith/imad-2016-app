@@ -17,7 +17,7 @@ function loadComments() {
                     for (var i = 0; i < commentList.length; i++ ){
                         var time = new Date(commentList[i].timestamp);
                         list += `<div class="comment">
-                        <li>${commentList[i].comment}</li>
+                        <li>$escapeHTML({commentList[i].comment})</li>
                         <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
                         </div>`;
                         }
@@ -30,6 +30,13 @@ function loadComments() {
     request.send(null);
 }
 
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
 //load Comment edit box to be able to enter comments.
 function loadForm(){
     console.log('Are you logged in?');
