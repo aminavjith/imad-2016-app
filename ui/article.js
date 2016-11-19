@@ -1,6 +1,6 @@
 var currentArticle = window.location.pathname.split('/')[2];
 loadComments();
-loadForm();
+loadLogin();
 
 //to load comments
 function loadComments() {
@@ -33,7 +33,7 @@ function loadComments() {
 
 
 //load Comment edit box to be able to enter comments.
-function loadLogin () {
+function loadLogin() {
     // Check if the user is already logged in
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
