@@ -11,13 +11,13 @@ function loadComments() {
             {
             if (request.status === 200)
                 {
-                    var commentList = request.responseText;
-                    commentList = JSON.parse(commentList);
+                    var commentLists = request.responseText;
+                    commentList = JSON.parse(commentLists);
                     var list = '';
                     for (var i = 0; i < commentList.length; i++ ){
                         var time = new Date(commentList[i].timestamp);
                         list += `<div class="comment">
-                        <p>${commentList[i].comment}</p>
+                        <li>${commentList[i].comment}</li>
                         <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
                         </div>`;
                         }
