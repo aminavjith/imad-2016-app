@@ -169,12 +169,13 @@ submit4.onclick = function() {
                     else{
                         alert('Not able to save comment.');
                         }
-                }
-        };
+            }};
+        }
     request.open('POST','http://aminavjith.imad.hasura-app.io/submit-comment/' + currentArticle, true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify({comment: inputComment}));
     };
+
 
 
 
