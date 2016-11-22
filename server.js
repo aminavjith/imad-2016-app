@@ -187,12 +187,12 @@ app.get('/articles/:articleName', function(req, res) {
 app.post('/submit-comment/:articleName', function(req, res) {
   var article = req.param.articleName;
   var comment = req.body.comment;
-  var date = new Date();
-  pool.query('INSERT INTO comments (article-id, comment, user-id, timestamp) VALUES ($1, $2, $3, $4);', [article, commentValue, req.session.auth.userId, date], function(err, result) {
+  
+  pool.query('INSERT INTO comments (article-id, comment, user-id) VALUES ($1, $2, $3);', [article, commentValue, req.session.auth.userId], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else {
-      res.send('Username: ' + username + 'created successfully');
+      res.send('Comment submitted successfully');
     }
   });
 });
