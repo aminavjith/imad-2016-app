@@ -185,9 +185,8 @@ app.get('/articles/:articleName', function(req, res) {
 
 //to save comment
 app.post('/submit-comment/:articleName', function(req, res) {
-  var article = req.param.articleName;
+  var article = req.params.articleName;
   var comment = req.body.comment;
-  
   pool.query('INSERT INTO comments (article-id, comment, user-id) VALUES ($1, $2, $3);', [article, commentValue, req.session.auth.userId], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
