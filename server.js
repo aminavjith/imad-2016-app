@@ -63,7 +63,7 @@ function createArticleTemplate(data) {
       </body2>
       </div>
       <br>
-      <div>
+      <div class="bodyx">
         <a href="/" text-align="right">Home</a>
         <h3>${heading}</h3>
         <br>
