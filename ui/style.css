@@ -7,7 +7,7 @@ body{
 
 .header{
   position: fixed;
-  top: 0;
+  top: 0px;
   width: 100%;
   height: 120px;
   color: white;
@@ -23,11 +23,11 @@ body{
   height: 420px;
   background-color: white;
   text-align: left;
-  
+  position: fixed;
 }
 
 .footer{
-  position:fixed;
+  position: fixed;
   left: 50px;
   top: 540px;
   width: 100%;
@@ -35,7 +35,7 @@ body{
 }
 
 .submit1{
-  position: fixed;
+  position:fixed;
   left: 700px;
   margin-top: 95px;
 }
@@ -47,25 +47,19 @@ body{
 }
 
 .submit3{
-  position: fixed;
+  position:fixed;
   left: 700px;
   margin-top: 40px;
 }
 
-.submit4{
-  left: 50px;
-}
-
-
-
-#userarea {
+#user {
     left: 700px;
     top: 10px;
     height: 60px;
     width: 180px;
 }
 
-#passwordarea {
+#password {
     left: 700px;
     top: 50px;
     height: 60px;
@@ -84,6 +78,7 @@ body{
 #text1{
   font-size: 150%;
   font-weight:bolder;
+  color: "white";
   top: 50px;
   left: 50px;
   height: 30px;
@@ -96,4 +91,3 @@ body{
   height:500px;
   width: 600px;
 }
-
