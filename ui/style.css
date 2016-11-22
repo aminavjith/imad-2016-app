@@ -23,11 +23,11 @@ body{
   height: 420px;
   background-color: white;
   text-align: left;
-  position: fixed;
+  
 }
 
 .footer{
-  position: fixed;
+  position:fixed;
   left: 50px;
   top: 540px;
   width: 100%;
