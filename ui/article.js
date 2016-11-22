@@ -153,8 +153,8 @@ submit3.onclick = function() {
 //to submit comment new
 var submit4 = document.getElementById('submit-comment');
 submit4.onclick = function() {
-    var inputComment = document.getElementById('comment').value;
-    if(inputComment === ''){
+    var comment = document.getElementById('comment').value;
+    if(comment === ''){
         alert('Please enter a comment.');
         }
         else{
@@ -162,18 +162,16 @@ submit4.onclick = function() {
             request.onreadystatechange = function(){
                 if(request.readyState === XMLHttpRequest.DONE){
                     if (request.status === 200){
-                        var x = document.getElementById('listing');
-                        x = '';
+                        document.getElementById('listing').value = '';
                         loadComments();
-                        }
-                    else{
+                    } else{
                         alert('Not able to save comment.');
                         }
-            }};
+                }};
         }
     request.open('POST','http://aminavjith.imad.hasura-app.io/submit-comment/' + currentArticle, true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify({inputComment: inputComment}));
+    request.send(JSON.stringify({comment: comment}));
     };
 
 
