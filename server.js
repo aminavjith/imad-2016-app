@@ -189,7 +189,7 @@ app.get('/articles/:articleName', function(req, res) {
 });
 
 //to save comment
-app.post('/submit-comments/:articleName', function(req, res) {
+app.post('/submit-comment/:articleName', function(req, res) {
   var article = req.param.articleName;
   var comment = req.body.comment;
   var date = new Date();
