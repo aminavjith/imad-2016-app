@@ -17,13 +17,14 @@ body{
 
 .bodyx{
   margin-left: 50px;
+  margin-top:100px;
   top: 120px;
   left: 10px;
   width: 60%;
   height: 420px;
   background-color: white;
   text-align: left;
-  position: fixed;
+  
 }
 
 .footer{
