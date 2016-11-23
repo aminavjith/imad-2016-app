@@ -23,7 +23,7 @@ var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    if(username === '' || password === ''){
+    if(username === "" || password === ""){
         alert('Please enter both username and password to login.');
     } else{
         console.log('logging in');
