@@ -199,6 +199,8 @@ app.get('/articles/:articleName', function(req, res) {
 app.post('/submit-comment/:articleName', function(req, res) {
   var article = req.params.articleName;
   var commentValue = req.body.comment;
+  var comment = JSON.parse(commentValue);
+  
   pool.query("SELECT * FROM article WHERE title = $1", [article], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
