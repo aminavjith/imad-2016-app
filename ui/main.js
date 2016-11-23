@@ -31,13 +31,13 @@ submit1.onclick = function() {
         request.onreadystatechange = function(){
             if(request.readyState === XMLHttpRequest.DONE){
                 if (request.status === 200){
-                    var x = JSON.parse(responseText);
+                    var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
-                        alert('Incorrect credentials.');
+                        alert(x);
                         display2();
                     } else{
                        console.log('User logged in.');
-                       alert('Logged in successfully.');
+                       alert(x);
                        display1();
                     }
                 }
