@@ -186,7 +186,7 @@ app.get('/articles/:articleName', function(req, res) {
 //to save comment
 app.post('/submit-comment/:articleName', function(req, res) {
   var article = req.params.articleName;
-  pool.query("SELECT article_id FROM article WHERE title = $1", [req.params.articleName], function(err, result) {
+  pool.query("SELECT article_id FROM article WHERE title = $1", [article], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
