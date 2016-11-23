@@ -30,11 +30,16 @@ submit1.onclick = function() {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function(){
             if(request.readyState === XMLHttpRequest.DONE){
-                if (request.status === 200)
-                {
-                   console.log('User logged in.');
-                   alert('Logged in successfully.');
-                   display1();
+                if (request.status === 200){
+                    var x = JSON.parse(responseText);
+                    if(x === "Invalid creds."){
+                        alert('Incorrect credentials.');
+                        display2();
+                    } else{
+                       console.log('User logged in.');
+                       alert('Logged in successfully.');
+                       display1();
+                    }
                 }
                 else if(request.status === 403)
                 {
