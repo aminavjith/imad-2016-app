@@ -9,7 +9,8 @@ function loadLogin() {
              display1();
           }
           else{
-              alert(JSON.parse(this.reponseText));
+              var x = JSON.parse(reponseText);
+              alert(x);
               display2();
           }
         }
