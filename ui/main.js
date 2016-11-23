@@ -61,7 +61,7 @@ submit2.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     if(username === '' || password === ''){
-        alert('Please enter both username and password to login.');
+        alert('Please enter both username and password to register.');
         return;
     } else{
     console.log('register');
@@ -71,7 +71,7 @@ submit2.onclick = function() {
             console.log('back in main');
             if (request.status === 200)
             {
-               var x = JSON.parse(responseText);
+               var x = JSON.parse(this.responseText);
                alert(x);
             }
             else
