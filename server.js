@@ -100,7 +100,7 @@ app.get('/register/', function(req, res) {
         res.status(500).send(err.toString());
       } else{
         if(result.rows.length !== 0){
-            res.send('Username: ' + username + ' already exists.');
+            res.send(JSON.stringify('Username: ' + username + ' already exists.'));
         } else{
             var password = details[1];
             var salt = crypto.randomBytes(128).toString('hex');
@@ -109,7 +109,7 @@ app.get('/register/', function(req, res) {
                 if (err) {
                   res.status(500).send(err.toString());
                 } else {
-                  res.send('Username: ' + username + ' created successfully');
+                  res.send(JSON.stringify('Username: ' + username + ' created successfully'));
                 }
             });
         }
