@@ -186,21 +186,21 @@ app.get('/articles/:articleName', function(req, res) {
 //to save comment
 app.post('/submit-comment/:articleName', function(req, res) {
   var article = req.params.articleName;
-  pool.query("SELECT article_id FROM article WHERE title = $1", [article], function(err, result) {
+  var comment = req.body.comment;
+  pool.query("SELECT * FROM article WHERE title = $1", [article], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
       res.status(404).send('File Not Found.');
     } else {
-      var article_id = result.rows[0];
-    }
-  });
-  var comment = req.body.comment;
-  pool.query('INSERT INTO comments (article_id, comment, user-id) VALUES ($1, $2, $3);', [article_id, commentValue, req.session.auth.userId], function(err, result) {
-    if (err) {
-      res.status(500).send(err.toString());
-    } else {
-      res.send('Comment submitted successfully');
+      var article_id = result.rows[0].article_id;
+      pool.query('INSERT INTO comments (article_id, comment, user-id) VALUES ($1, $2, $3);', [article_id, commentValue, req.session.auth.userId], function(err, result) {
+        if (err) {
+            res.status(500).send(err.toString());
+        } else {
+            res.send('Comment submitted successfully');
+        }
+      });
     }
   });
 });
