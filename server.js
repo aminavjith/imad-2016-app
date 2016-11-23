@@ -43,24 +43,24 @@ function createArticleTemplate(data) {
       </head>
       <body>
         <div class = "header">
-      <div id="text1" class="header"> Learning to create webapps
-      </div>
-      <body1 id="login"  >
-        <div id="userarea" class="header"> Username <br>
-            <input placeholder="Username" id="username" type="name"/> <br>
+            <div id="text1" class="header"> Learning to create webapps
+            </div>
+            <body1 id="login">
+                <div id="userarea" class="header"> Username <br>
+                    <input placeholder="Username" id="username" type="name"/> <br>
+                </div>
+                <div id="passwordarea" class="header"> Password: <br>
+                    <input placeholder="Password" id="password" type="password" />
+                </div>
+                <input type="button" id="submit-user" class="submit1" value="Login"/>
+                <input type="button" id="register" class="submit2" value="Register"/>
+            </body1>
+            <body2 id="logout" style="display:none;">
+                <div id="userarea" class="header"> You are now signed in. <br>
+                    <input type="button" id="logout-user" class="submit3" value="Log Out"/>
+                 </div>
+            </body2>
         </div>
-        <div id="passwordarea" class="header"> Password: <br>
-            <input placeholder="Password" id="password" type="password" />
-        </div>
-            <input type="button" id="submit-user" class="submit1" value="Login"/>
-            <input type="button" id="register" class="submit2" value="Register"/>
-      </body1>
-      <body2 id="logout" style="display:none;">
-        <div id="userarea" class="header"> You are now signed in. <br>
-            <input type="button" id="logout-user" class="submit3" value="Log Out"/>
-        </div>
-      </body2>
-      </div>
       <br>
       <div class="bodyx">
         <a href="/" text-align="right">Home</a>
@@ -69,14 +69,15 @@ function createArticleTemplate(data) {
         <hr>
         ${date.toDateString()}<br>
         ${content}
-       <hr>
-      <div id="commentform" style="display:none;">
-        <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
-        <input type="button" id="submit-comment" class="submit4" value="Submit Comment"/>
+        <hr>
+        <div id="commentform" style="display:none;">
+            <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
+            <input type="button" id="submit-comment" class="submit4" value="Submit Comment"/>
+        </div>
+        <ul id="listing">
+        </ul>
       </div>
-      <ul id="listing">
-      </ul>
-      </body>
+     </body>
       <script type="text/javascript" src="/ui/article.js">
       </script>
      </html>`;
