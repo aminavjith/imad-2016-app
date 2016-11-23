@@ -8,8 +8,8 @@ function loadLogin() {
              console.log('User logged in.');
              display1();
           }
-          else
-          {
+          else{
+              alert(JSON.parse(reponseText));
               display2();
           }
         }
