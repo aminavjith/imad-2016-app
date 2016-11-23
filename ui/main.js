@@ -25,7 +25,6 @@ submit1.onclick = function() {
     var password = document.getElementById('password').value;
     if(username === '' || password === ''){
         alert('Please enter both username and password to login.');
-        return;
     } else{
         console.log('logging in');
         var request = new XMLHttpRequest();
