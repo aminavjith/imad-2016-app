@@ -67,7 +67,7 @@ submit2.onclick = function() {
             console.log('back in main');
             if (request.status === 200)
             {
-               var x = JSON.parse(this.responseText);
+               var x = JSON.parse(responseText);
                alert(x);
             }
             else
