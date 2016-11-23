@@ -167,7 +167,7 @@ submit3.onclick = function() {
     request.send('null');
 };
 
-//to submit comment new
+//to submit new comment 
 var submit4 = document.getElementById('submit-comment');
 submit4.onclick = function() {
     var comment = document.getElementById('comment').value;
@@ -182,6 +182,7 @@ submit4.onclick = function() {
                         document.getElementById('listing').value = '';
                         loadComments();
                     } else{
+                        console.log(err);
                         alert('Not able to save comment.');
                         }
                 }};
