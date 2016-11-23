@@ -205,7 +205,8 @@ app.post('/submit-comment/:articleName', function(req, res) {
       res.status(404).send('File Not Found.');
     } else {
       var article_id = result.rows[0].id;
-      pool.query('INSERT INTO comments (article_id, comment, user_id) VALUES ($1, $2, $3);', [article_id, commentValue, req.session.auth.userId], function(err, result) {
+      date = new Date();
+      pool.query('INSERT INTO comments (article_id, comment, user_id, timestamp) VALUES ($1, $2, $3, $4);', [article_id, commentValue, req.session.auth.userId, date], function(err, result) {
         if (err) {
             res.status(500).send(err.toString());
         } else {
