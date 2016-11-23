@@ -39,11 +39,13 @@ function loadLogin() {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
              console.log('User logged in.');
+             display1();
              displayform();
           }
           else
           {
               alert('Please login to be able to enter comments');
+              display2();
               hideform();
           }
         }
