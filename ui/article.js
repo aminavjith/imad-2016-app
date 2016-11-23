@@ -179,7 +179,7 @@ submit4.onclick = function() {
         var comment = document.getElementById('comment').value;
         request.open('POST','http://aminavjith.imad.hasura-app.io/submit-comment/' + currentArticle, true);
         request.setRequestHeader('Content-Type', 'application/json');
-        request.send(JSON.stringify({comment: comment}));
+        request.send(JSON.stringify({comment: "comment"}));
         }
     };
 
