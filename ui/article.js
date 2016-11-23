@@ -74,6 +74,7 @@ function hideform() {
     document.getElementById("commentform").style.display = "none";
 }
 
+
 //to log in
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
@@ -86,12 +87,17 @@ submit1.onclick = function() {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function(){
             if(request.readyState === XMLHttpRequest.DONE){
-                if (request.status === 200)
-                {
-                   console.log('User logged in.');
-                   alert('Logged in successfully.');
-                   display1();
-                   displayform();
+                if (request.status === 200){
+                    var x = JSON.parse(this.responseText);
+                    if(x === "Invalid creds."){
+                        alert(x);
+                        display2();
+                    } else{
+                       console.log('User logged in.');
+                       alert(x);
+                       display1();
+                        displayform();
+                    }
                 }
                 else if(request.status === 403)
                 {
@@ -108,13 +114,15 @@ submit1.onclick = function() {
     request.send(JSON.stringify({username: username, password: password}));
 }};
 
+
 // To register
 var submit2 = document.getElementById('register');
 submit2.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    if(username === "" || password === ""){
+    if(username === '' || password === ''){
         alert('Please enter both username and password to login.');
+        return;
     } else{
     console.log('register');
     var request = new XMLHttpRequest();
@@ -123,7 +131,8 @@ submit2.onclick = function() {
             console.log('back in main');
             if (request.status === 200)
             {
-               alert('Registered successfully.');
+               var x = JSON.parse(responseText);
+               alert(x);
             }
             else
             {
