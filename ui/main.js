@@ -1,3 +1,24 @@
+loadLogin();
+//check-login
+function loadLogin() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            if (request.status === 200) {
+             console.log('User logged in.');
+             display1();
+          }
+          else
+          {
+              alert('Please login to be able to enter comments');
+              display2();
+          }
+        }
+    };
+    request.open('GET', 'http://aminavjith.imad.hasura-app.io/check-login', true);
+    request.send(null);
+}
+
 //to log in
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
