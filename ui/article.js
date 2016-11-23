@@ -82,6 +82,9 @@ submit1.onclick = function() {
     var password = document.getElementById('password').value;
     if(username === "" || password === ""){
         alert('Please enter both username and password to login.');
+        document.getElementById('username').value = "";
+        document.getElementById('password').value = "";
+        
     } else{
         console.log('logging in');
         var request = new XMLHttpRequest();
@@ -179,7 +182,8 @@ submit4.onclick = function() {
             request.onreadystatechange = function(){
                 if(request.readyState === XMLHttpRequest.DONE){
                     if (request.status === 200){
-                        document.getElementById('listing').value = '';
+                        document.getElementById('comment').value = "";
+                        document.getElementById('listing').value = "";
                         loadComments();
                     } else{
                         console.log((request.responseText));
