@@ -10,7 +10,6 @@ function loadLogin() {
           }
           else
           {
-              alert('Please login to be able to enter comments');
               display2();
           }
         }
