@@ -182,7 +182,7 @@ submit4.onclick = function() {
                         document.getElementById('listing').value = '';
                         loadComments();
                     } else{
-                        console.log(err);
+                        console.log(JSON.parse(responseText));
                         alert('Not able to save comment.');
                         }
                 }};
