@@ -91,6 +91,7 @@ submit1.onclick = function() {
                    console.log('User logged in.');
                    alert('Logged in successfully.');
                    display1();
+                   displayform();
                 }
                 else if(request.status === 403)
                 {
