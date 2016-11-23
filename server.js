@@ -95,16 +95,25 @@ app.get('/register/', function(req, res) {
   var username = req.query.username;
   var details = username.split('||');
   username = details[0];
-  var password = details[1];
-  var salt = crypto.randomBytes(128).toString('hex');
-  var dbString = hash(password, salt);
-  pool.query('INSERT INTO "usernames" (username, password) VALUES ($1, $2);', [username, dbString], function(err, result) {
-    if (err) {
-      res.status(500).send(err.toString());
-    } else {
-      res.send('Username: ' + username + ' created successfully');
-    }
-  });
+  pool.query('SELECT * FROM usernames WHERE username = $1',[username], function(err, result){
+      if (err){
+        res.status(500).send(err.toString());
+      } else{
+        if(result.rows.length !==0){
+            res.send('Username: ' + username + ' already exists.');
+        } else{
+            var password = details[1];
+            var salt = crypto.randomBytes(128).toString('hex');
+            var dbString = hash(password, salt);
+            pool.query('INSERT INTO usernames (username, password) VALUES ($1, $2);', [username, dbString], function(err, result) {
+                if (err) {
+                  res.status(500).send(err.toString());
+                } else {
+                  res.send('Username: ' + username + ' created successfully');
+                }
+            });
+        }
+      }});
 });
 
 //endpoint to login to the app
