@@ -1,6 +1,7 @@
 var currentArticle = window.location.pathname.split('/')[2];
-loadComments();
 loadLogin();
+loadComments();
+
 
 //to load comments
 function loadComments() {
