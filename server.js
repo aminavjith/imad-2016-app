@@ -38,6 +38,7 @@ function createArticleTemplate(data) {
         <title>
           ${title}
         </title>
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
         <link  href="/ui/style.css" rel="stylesheet" />
         <link  href="favicon.ico" rel="icon" />
       </head>
