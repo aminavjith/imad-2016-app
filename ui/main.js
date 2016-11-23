@@ -67,7 +67,8 @@ submit2.onclick = function() {
             console.log('back in main');
             if (request.status === 200)
             {
-               alert('Registered successfully.');
+               var x = JSON.parse(this.responseText);
+               alert(x);
             }
             else
             {
