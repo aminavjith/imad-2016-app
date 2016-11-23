@@ -77,33 +77,35 @@ function hideform() {
 //to log in
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
-    console.log('logging in');
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE){
-            if (request.status === 200)
-            {
-               console.log('User logged in.');
-               alert('Logged in successfully.');
-               display1();
-               displayform();
-            }
-            else if(request.status === 403)
-            {
-                alert('Incorrect credentials.');
-            }
-            else if(request.status === 500)
-            {
-                alert('Unknown error');
-            }
-        }
-    };
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
+    if(username === "" || password === ""){
+        alert('Please enter both username and password to login.');
+    } else{
+        console.log('logging in');
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function(){
+            if(request.readyState === XMLHttpRequest.DONE){
+                if (request.status === 200)
+                {
+                   console.log('User logged in.');
+                   alert('Logged in successfully.');
+                   display1();
+                }
+                else if(request.status === 403)
+                {
+                    alert('Incorrect credentials.');
+                }
+                else if(request.status === 500)
+                {
+                    alert('Unknown error');
+                }
+            }
+        };
     request.open('POST','http://aminavjith.imad.hasura-app.io/login', true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify({username: username, password: password}));
-};
+}};
 
 // To register
 var submit2 = document.getElementById('register');
