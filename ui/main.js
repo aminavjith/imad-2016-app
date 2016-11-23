@@ -9,7 +9,7 @@ function loadLogin() {
              display1();
           }
           else{
-              alert(JSON.parse(reponseText));
+              alert(JSON.parse(this.reponseText));
               display2();
           }
         }
