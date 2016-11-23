@@ -9,8 +9,6 @@ function loadLogin() {
              display1();
           }
           else{
-              var x = JSON.parse(reponseText);
-              alert(x);
               display2();
           }
         }
