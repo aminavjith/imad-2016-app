@@ -182,7 +182,7 @@ submit4.onclick = function() {
                         document.getElementById('listing').value = '';
                         loadComments();
                     } else{
-                        console.log(JSON.parse(this.responseText));
+                        console.log((request.responseText));
                         alert('Not able to save comment.');
                         }
                 }};
@@ -190,6 +190,7 @@ submit4.onclick = function() {
         request.open('POST','http://aminavjith.imad.hasura-app.io/submit-comment/' + currentArticle, true);
         request.setRequestHeader('Content-Type', 'application/json');
         request.send(JSON.stringify({comment: comment}));
+        request.responseType = 'text';
         }
     };
 
