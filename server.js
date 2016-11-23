@@ -134,9 +134,9 @@ app.post('/login', function(req, res) {
           req.session.auth = {
             userId: result.rows[0].id
           };
-          res.send('Logged in successfully');
+          res.send(JSON.stringify('Logged in successfully'));
         } else {
-          res.send('Invalid creds.');
+          res.send(JSON.stringify('Invalid creds.'));
         }
       }
     }
