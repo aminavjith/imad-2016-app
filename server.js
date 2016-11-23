@@ -125,15 +125,14 @@ app.post('/login', function(req, res) {
       res.status(500).send(err.toString());
     } else {
       if (result.rows.length === 0) {
-        res.send(403).send('Username/ password is invalid');
+        res.send(403).send('Username/ password doesnot exist');
       } else {
         var dbString = result.rows[0].password;
         var salt = dbString.split('$')[2];
         var hashedPassword = hash(password, salt);
         if (dbString === hashedPassword) {
           req.session.auth = {
-            userId: result.rows[0].id
-          };
+            userId: result.rows[0].id};
           res.send(JSON.stringify('Logged in successfully'));
         } else {
           res.send(JSON.stringify('Invalid creds.'));
