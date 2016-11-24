@@ -33,7 +33,6 @@ function onLoad(){
                     
                     var list = '';
                     for (var i = 0; i < articleList.length; i++ ){
-                        var time = new Date(articleList[i].timestamp);
                         //<a href="/articles/article-one"> HTML </a> <br>
                         list += `<a href="/articles/articleList[i].title"> articleList[i].heading </a> <br>`;
                         }
