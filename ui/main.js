@@ -1,3 +1,4 @@
+onLoad ();
 loadLogin();
 //check-login
 function loadLogin() {
@@ -15,6 +16,32 @@ function loadLogin() {
     };
     request.open('GET', 'http://aminavjith.imad.hasura-app.io/check-login', true);
     request.send('null');
+}
+
+//to get article list
+function onLoad(){
+   console.log('load comments');
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE)
+            {
+            if (request.status === 200)
+                {
+                    var articleList = request.responseText;
+                    articleList = JSON.parse(commentLists);
+                    var list = '';
+                    for (var i = 0; i < articleList.length; i++ ){
+                        var time = new Date(articleList[i].timestamp);
+                        //<a href="/articles/article-one"> HTML </a> <br>
+                        list += `<a href="/articles/articleList[i].title"> articleList[i].heading </a> <br>`;
+                        }
+                    var ul = document.getElementById('y');
+                    ul.innerHTML = list;
+                }
+            }
+    };
+    request.open('GET','http://aminavjith.imad.hasura-app.io/listing', true);
+    request.send(null);
 }
 
 //to log in
