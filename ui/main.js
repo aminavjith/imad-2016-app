@@ -8,8 +8,7 @@ function loadLogin() {
             if (request.status === 200) {
              console.log('User logged in.');
              display1();
-          }
-          else{
+          } else{
               display2();
           }
         }
@@ -23,10 +22,8 @@ function onLoad(){
    console.log('load comments');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE)
-            {
-            if (request.status === 200)
-                {
+        if(request.readyState === XMLHttpRequest.DONE){
+            if (request.status === 200){
                     var articleList = request.responseText;
                     //console.log((request.responseText));
                     articleList = JSON.parse(articleList);
@@ -137,12 +134,17 @@ submit3.onclick = function() {
 function display1() {
     document.getElementById("login").style.display = "none";
     document.getElementById("logout").style.display = "inline";
+    document.getElementById("submit5").style.display = "inline";
 }
 
 //to display login section after logging out
 function display2() {
     document.getElementById("login").style.display = "inline";
     document.getElementById("logout").style.display = "none";
+    document.getElementById("submit5").style.display = "none";
 }
+
+
+
 
 
