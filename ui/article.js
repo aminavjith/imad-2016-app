@@ -29,7 +29,7 @@ function loadComments() {
             }
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
-    request.send(null);
+    request.send('null');
 }
 
 
@@ -52,7 +52,7 @@ function loadLogin() {
         }
     };
     request.open('GET', 'http://aminavjith.imad.hasura-app.io/check-login', true);
-    request.send(null);
+    request.send('null');
 }
 
 //to display logout section after successful login
