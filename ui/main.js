@@ -19,7 +19,7 @@ function loadLogin() {
 
 //to get article list
 function onLoad(){
-   console.log('load comments');
+   console.log('load articlelist');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
