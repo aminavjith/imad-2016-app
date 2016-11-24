@@ -28,7 +28,7 @@ function onLoad(){
             if (request.status === 200)
                 {
                     var articleList = request.responseText;
-                    console.log((request.responseText));
+                    //console.log((request.responseText));
                     articleList = JSON.parse(articleList);
                     var list = '';
                     for (var i = 0; i < articleList.length; i++ ){
