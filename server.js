@@ -182,7 +182,7 @@ app.get('/load-comments/:articleName', function(req, res) {
 
 //endpoint to display list of articles
 app.get('/listing', function(req, res) {
-  pool.query("SELECT title, heading FROM article", function(err, result) {
+  pool.query("SELECT id, title, heading FROM article", function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
@@ -197,7 +197,7 @@ app.get('/listing', function(req, res) {
 //endpoint to display article
 app.get('/articles/:articleName', function(req, res) {
   //var articleName= req.params.articleName;
-  pool.query("SELECT * FROM article WHERE title = $1", [req.params.articleName], function(err, result) {
+  pool.query("SELECT * FROM article WHERE heading = $1", [req.params.articleName], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
