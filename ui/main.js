@@ -28,7 +28,7 @@ function onLoad(){
             if (request.status === 200)
                 {
                     var articleList = request.responseText;
-                    articleList = JSON.parse(commentLists);
+                    articleList = JSON.parse(articleList);
                     var list = '';
                     for (var i = 0; i < articleList.length; i++ ){
                         var time = new Date(articleList[i].timestamp);
