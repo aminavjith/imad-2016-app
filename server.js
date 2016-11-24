@@ -180,6 +180,20 @@ app.get('/load-comments/:articleName', function(req, res) {
   });
 });
 
+//endpoint to display list of articles
+app.get('/listing', function(req, res) {
+  pool.query("SELECT title, heading FROM article", function(err, result) {
+    if (err) {
+      res.status(500).send(err.toString());
+    } else if (result.rows.length === 0) {
+      res.status(404).send('No articles found');
+    } else {
+      var articleList = result.rows;
+      res.send(JSON.stringify(ArticleList));
+    }
+  });
+});
+
 //endpoint to display article
 app.get('/articles/:articleName', function(req, res) {
   //var articleName= req.params.articleName;
