@@ -134,14 +134,14 @@ submit3.onclick = function() {
 function display1() {
     document.getElementById("login").style.display = "none";
     document.getElementById("logout").style.display = "inline";
-    document.getElementById("submit5").style.display = "inline";
+    document.getElementById("create-article").style.display = "inline";
 }
 
 //to display login section after logging out
 function display2() {
     document.getElementById("login").style.display = "inline";
     document.getElementById("logout").style.display = "none";
-    document.getElementById("submit5").style.display = "none";
+    document.getElementById("create-article").style.display = "none";
 }
 
 
