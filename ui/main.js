@@ -130,26 +130,7 @@ submit3.onclick = function() {
     request.send('null');
 };
 
-var submit5 = document.getElementById('create-article');
-submit5.onclick = function() {
-    console.log('Yay!');
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE){
-            console.log('back in main');
-            if (request.status === 200)
-            {
-              display2();
-            }
-            else
-            {
-              alert('Not logged out');
-            }
-        }
-    };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/logout', true);
-    request.send('null');
-};
+
 
 
 //to display logout section after successful login
