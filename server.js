@@ -189,7 +189,7 @@ app.get('/listing', function(req, res) {
       res.status(404).send('No articles found');
     } else {
       var articleList = result.rows;
-      res.send(JSON.stringify(ArticleList));
+      res.send(JSON.stringify(articleList));
     }
   });
 });
