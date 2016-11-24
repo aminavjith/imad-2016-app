@@ -7,11 +7,11 @@ function loadLogin() {
             if (request.status === 200) {
              console.log('User logged in.');
           } else{
-             var newHTML ='
+             var newHTML =`
              <a href="/" text-align="right">Home</a>
              <h3>Please login  by going <span href="/"> HOME</span> to be able to create an article</h3>
              <br>
-             <hr>';
+             <hr>`;
              var bodyx = document.getElementById('bodyx');
              bodyx.innerHTML = newHTML;
           }
