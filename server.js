@@ -44,7 +44,9 @@ function createArticleTemplate(data) {
       </head>
       <body>
         <div class = "header">
-            <img id="img1" src="/ui/logo.jpg" style="height:50px; width: 50px;"/>
+            <a href="/">
+                <img id="img1" src="/ui/logo.jpg" style="height:50px; width:50px;"/>
+            </a>
             <div id="text1" class="header"> Learning to create webapps
             </div>
             <body1 id="login">
@@ -65,7 +67,7 @@ function createArticleTemplate(data) {
         </div>
       <br>
       <div class="bodyx">
-        <a href="/" text-align="right">Home</a>
+        
         <h3>${heading}</h3>
         <br>
         <hr>
