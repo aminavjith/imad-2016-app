@@ -15,13 +15,14 @@ function loadComments() {
                 {
                     var ul = document.getElementById('listing');
                     var commentLists = request.responseText;
-                    commentList = JSON.parse(commentLists);
-                    if(commentList === 'No comments posted.') {
+                    
+                    if(commentLists === 'No comments posted.') {
                         var noList = `<div class="comment" style="font-size:13px;" >
                             <p>No comments posted. </p>
                             </div>`;
                         ul.innerHTML = noList;
                     } else {
+                        commentList = JSON.parse(commentLists);
                         var list = '';
                         for (var i = 0; i < commentList.length; i++ ){
                             var time = new Date(commentList[i].timestamp);
