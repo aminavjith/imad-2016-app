@@ -17,9 +17,9 @@ function loadComments() {
                     var list = '';
                     for (var i = 0; i < commentList.length; i++ ){
                         var time = new Date(commentList[i].timestamp);
-                        console.log(commentList[i].comment);
+                        
                         list += `<div class="comment" style="font-size:13px;" >
-                        <li>${commentList[i].comment}</li>
+                        <li>escapeHTML(${commentList[i].comment})</li>
                         <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
                         </div>`;
                         }
@@ -186,5 +186,13 @@ submit4.onclick = function() {
         request.responseType = 'text';
         }
     };
+
+function escapeHTML (text)
+{
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
+}
 
     
