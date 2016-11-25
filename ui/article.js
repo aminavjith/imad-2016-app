@@ -10,7 +10,6 @@ function loadComments() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            
             if (request.status === 200){
                 var commentLists = request.responseText;
                 var commentList = JSON.parse(commentLists);
