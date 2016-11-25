@@ -177,7 +177,7 @@ app.get('/load-comments/:articleId', function(req, res) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
-      res.status(404).send(err.toString());
+      res.status(404).send('No comments posted');
     } else {
       var articleData = result.rows;
       res.send(JSON.stringify(articleData));
