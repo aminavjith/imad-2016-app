@@ -25,7 +25,7 @@ var submit6 = document.getElementById('save-article');
 submit6.onclick = function(){
     var heading = document.getElementById('heading').value;
     var content = document.getElementById('content').value;
-     if(caseHeading === '' || content === ''){
+     if(heading === '' || content === ''){
         alert('Please enter heading and content in order be able to save this article.');
     } else {
         var upHeading = heading.toUpperCase();
