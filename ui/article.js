@@ -9,25 +9,28 @@ function loadComments() {
     console.log('load comments');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE){
-            if (request.status === 200){
-                var commentLists = request.responseText;
-                var commentList = JSON.parse(commentLists);
-                var list = '';
-                for (var i = 0; i < commentList.length; i++ ){
-                    var time = new Date(commentList[i].timestamp);
-                    list += `<div class="comment" style="font-size:13px;" >
-                    <li>${escapeHTML(commentList[i].comment)}</li>
-                    <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
-                    </div>`;
+        if(request.readyState === XMLHttpRequest.DONE)
+            {
+            if (request.status === 200)
+                {
+                    var commentLists = request.responseText;
+                    commentList = JSON.parse(commentLists);
+                    var list = '';
+                    for (var i = 0; i < commentList.length; i++ ){
+                        var time = new Date(commentList[i].timestamp);
+                        console.log(commentList[i].comment);
+                        list += `<div class="comment" style="font-size:13px;" >
+                        <li>${commentList[i].comment}</li>
+                        <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
+                        </div>`;
+                        }
+                    var ul = document.getElementById('listing');
+                    ul.innerHTML = list;
                 }
-                var ul = document.getElementById('listing');
-                ul.innerHTML = list;
-            } 
-        }
+            }
+    };
     request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
     request.send('null');
-};
 }
 
 //load Comment edit box to be able to enter comments.
