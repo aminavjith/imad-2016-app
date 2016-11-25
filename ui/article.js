@@ -19,7 +19,7 @@ function loadComments() {
                         var time = new Date(commentList[i].timestamp);
                         
                         list += `<div class="comment" style="font-size:13px;" >
-                        <li>escapeHTML(${commentList[i].comment})</li>
+                        <li>${escapeHTML(commentList[i].comment)}</li>
                         <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
                         </div>`;
                         }
