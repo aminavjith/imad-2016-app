@@ -27,6 +27,7 @@ submit6.onclick = function(){
     var content = document.getElementById('content').value;
      if(heading === '' || content === ''){
         alert('Please enter heading and content in orde be able to save this article.');
+        var upheading = heading.toUpperCase();
     } else {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function(){
@@ -48,7 +49,7 @@ submit6.onclick = function(){
     };
     request.open('POST', 'http://aminavjith.imad.hasura-app.io/save-article', true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify({heading: heading, content: content}));
+    request.send(JSON.stringify({heading: upheading, content: content}));
     request.responseType = 'text';
 }};
 
