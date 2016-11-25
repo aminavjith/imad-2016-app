@@ -277,7 +277,7 @@ app.get('/ui/test.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'test.js'));
 });
 
-app.get('/ui/create-article.html/', function(req, res) {
+app.get('/ui/test.html/', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'test.html'));
 });
 
