@@ -58,18 +58,13 @@ submit1.onclick = function() {
                     if(x === "Invalid creds."){
                         alert(x);
                         display2();
-                    } else{
+                    } else {
                        console.log('User logged in.');
-                       alert(x);
                        display1();
                     }
-                }
-                else if(request.status === 403)
-                {
+                } else if(request.status === 403) {
                     alert('Incorrect credentials.');
-                }
-                else if(request.status === 500)
-                {
+                } else if(request.status === 500) {
                     alert('Unknown error');
                 }
             }
@@ -93,13 +88,10 @@ submit2.onclick = function() {
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
             console.log('back in main');
-            if (request.status === 200)
-            {
+            if (request.status === 200) {
                var x = JSON.parse(this.responseText);
                alert(x);
-            }
-            else
-            {
+            } else {
                 alert('Not able to register');
             }
         }
@@ -116,12 +108,9 @@ submit3.onclick = function() {
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
             console.log('back in main');
-            if (request.status === 200)
-            {
+            if (request.status === 200) {
               display2();
-            }
-            else
-            {
+            } else {
               alert('Not logged out');
             }
         }
@@ -129,9 +118,6 @@ submit3.onclick = function() {
     request.open('GET','http://aminavjith.imad.hasura-app.io/logout', true);
     request.send('null');
 };
-
-
-
 
 //to display logout section after successful login
 function display1() {
