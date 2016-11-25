@@ -36,7 +36,7 @@ function createArticleTemplate(data) {
     `<html>
       <head>
         <title>
-          ${title}
+          ${heading}
         </title>
         <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
         <link  href="/ui/style.css" rel="stylesheet" />
