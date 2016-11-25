@@ -23,11 +23,11 @@ function loadLogin() {
 
 var submit6 = document.getElementById('save-article');
 submit6.onclick = function(){
-    var heading = document.getElementById('heading').value;
+    var caseHeading = document.getElementById('heading').value;
     var content = document.getElementById('content').value;
-     if(heading === '' || content === ''){
-        alert('Please enter heading and content in orde be able to save this article.');
-        var upheading = heading.toUpperCase();
+     if(caseHeading === '' || content === ''){
+        alert('Please enter heading and content in order be able to save this article.');
+        var heading = caseHeading.toUpperCase();
     } else {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function(){
@@ -49,7 +49,7 @@ submit6.onclick = function(){
     };
     request.open('POST', 'http://aminavjith.imad.hasura-app.io/save-article', true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify({heading: upheading, content: content}));
+    request.send(JSON.stringify({heading: heading, content: content}));
     request.responseType = 'text';
 }};
 
