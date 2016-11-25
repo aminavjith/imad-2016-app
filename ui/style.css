@@ -91,7 +91,7 @@ body{
 #img1{
     position: fixed;
     padding-left: 50px;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 #img2{
@@ -107,7 +107,7 @@ body{
   font-size: 150%;
   font-weight:bolder;
   top: 50px;
-  left: 50px;
+  left: 150px;
   height: 30px;
 }
 
