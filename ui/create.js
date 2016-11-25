@@ -48,7 +48,7 @@ submit6.onclick = function(){
     };
     request.open('POST', 'http://aminavjith.imad.hasura-app.io/save-article', true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify({heading: heading, comment: comment}));
+    request.send(JSON.stringify({heading: heading, content: content}));
     request.responseType = 'text';
 }};
 
