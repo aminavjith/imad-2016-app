@@ -23,7 +23,7 @@ function loadComments() {
                     </div>`;
                 }
                 ul.innerHTML = list;
-            } else if(request.status === 400) {
+            } else if(request.status === 404) {
                 var noList = `<div class="comment" style="font-size:13px;" >
                     <p>No comments posted. </p>
                     </div>`;
