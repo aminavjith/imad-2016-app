@@ -18,7 +18,6 @@ function loadComments() {
                     var list = '';
                     for (var i = 0; i < commentList.length; i++ ){
                         var time = new Date(commentList[i].timestamp);
-                        
                         list += `<div class="comment" style="font-size:13px;" >
                         <li>${escapeHTML(commentList[i].comment)}</li>
                         <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
@@ -94,8 +93,7 @@ submit1.onclick = function() {
                     if(x === "Invalid creds."){
                         alert(x);
                         display2();
-                    } else{
-                        alert(x);
+                    } else {
                         display1();
                         displayform();
                     }
