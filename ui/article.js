@@ -1,3 +1,4 @@
+//to get id of article
 var currentArticle = window.location.pathname.split('/')[2];
 loadLogin();
 loadComments();
@@ -41,9 +42,7 @@ function loadLogin() {
             if (request.status === 200) {
              display1();
              displayform();
-          }
-          else
-          {
+          } else {
               alert('Please login to be able to enter comments');
               display2();
               hideform();
@@ -66,14 +65,15 @@ function display2() {
     document.getElementById("logout").style.display = "none";
 }
 
+//to display comment form
 function displayform() {
     document.getElementById("commentform").style.display = "inline";
 }
 
+//to hide comment form
 function hideform() {
     document.getElementById("commentform").style.display = "none";
 }
-
 
 //to log in
 var submit1 = document.getElementById('submit-user');
@@ -84,7 +84,6 @@ submit1.onclick = function() {
         alert('Please enter both username and password to login.');
         document.getElementById('username').value = "";
         document.getElementById('password').value = "";
-        
     } else{
         console.log('logging in');
         var request = new XMLHttpRequest();
@@ -100,8 +99,7 @@ submit1.onclick = function() {
                         display1();
                         displayform();
                     }
-                }
-                else if(request.status === 403) {
+                } else if(request.status === 403) {
                     alert('Incorrect credentials.');
                 } else if(request.status === 500) {
                     alert('Unknown error');
