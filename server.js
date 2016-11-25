@@ -212,10 +212,10 @@ app.get('/articles/:articleName', function(req, res) {
 });
 
 //to save comment
-app.post('/submit-comment/:articleName', function(req, res) {
-  var article = req.params.articleName;
+app.post('/submit-comment/:articleId', function(req, res) {
+  var id = req.params.Id;
   var commentValue = req.body.comment;
-  pool.query("SELECT * FROM article WHERE title = $1", [article], function(err, result) {
+  pool.query("SELECT * FROM article WHERE id = $1", [id], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
