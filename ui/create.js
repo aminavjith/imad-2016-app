@@ -9,7 +9,7 @@ function loadLogin() {
           } else{
              var newHTML =`
              <br>
-             <h3>Please login from <span href="/"> HOME</span> to be able to create an article</h3>
+             <h3>Please login from <span href="/"> HOME</span> to be able to create an article.</h3>
              <br>
              <hr>`;
              var bodyx = document.getElementById('bodyx');
