@@ -221,12 +221,28 @@ app.post('/submit-comment/:articleName', function(req, res) {
     } else {
       var article_id = result.rows[0].id;
       date = new Date();
-      pool.query('INSERT INTO comments (article_id, comment, user_id, timestamp) VALUES ($1, $2, $3, $4);', [article_id, commentValue, req.session.auth.userId, date], function(err, result) {
+      pool.query("INSERT INTO comments (article_id, comment, user_id, timestamp) VALUES ($1, $2, $3, $4);", [article_id, commentValue, req.session.auth.userId, date], function(err, result) {
         if (err) {
             res.status(500).send(err.toString());
         } else {
             res.send('Comment submitted successfully');
         }
+      });
+    }
+  });
+});
+
+//to save article
+app.post('/save-article/', function(req, res) {
+  var heading = req.body.heading;
+  var content = req.body.content;
+  var date = new Date();
+  pool.query("INSERT INTO article (heading, date, content) VALUES ($1, $2, $3);", [heading, date, content], function(err, result) {
+    if (err) {
+        res.status(500).send(err.toString());
+    } else {
+        res.send('Article created successfully');
+    }
       });
     }
   });
