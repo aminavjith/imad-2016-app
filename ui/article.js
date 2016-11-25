@@ -9,33 +9,30 @@ function loadComments() {
     console.log('load comments');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE)
-            {
+        if(request.readyState === XMLHttpRequest.DONE){
             if (request.status === 200)
                 {
                     var ul = document.getElementById('listing');
                     var commentLists = request.responseText;
-                    
-                    if(commentLists.value === 'No comments posted.') {
+                    var commentList = JSON.parse(commentLists);
+                    var list = '';
+                    if(commentList.length === 0){
                         var noList = `<div class="comment" style="font-size:13px;" >
-                            <p>No comments posted. </p>
-                            </div>`;
+                        <p>No comments posted. </p>
+                        </div>`;
                         ul.innerHTML = noList;
                     } else {
-                        var commentList = JSON.parse(commentLists);
-                        var list = '';
-                        for (var i = 0; i < commentList.length; i++ ){
-                            var time = new Date(commentList[i].timestamp);
-                            list += `<div class="comment" style="font-size:13px;" >
-                            <li>${escapeHTML(commentList[i].comment)}</li>
-                            <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
-                            </div>`;
-                            }
-                        ul.innerHTML = list;
+                    for (var i = 0; i < commentList.length; i++ ){
+                        var time = new Date(commentList[i].timestamp);
+                        list += `<div class="comment" style="font-size:13px;" >
+                        <li>${escapeHTML(commentList[i].comment)}</li>
+                        <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
+                        </div>`;
                     }
-                    
+                    ul.innerHTML = list;
+                    }
                 }
-            }
+        }
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
     request.send('null');
