@@ -39,7 +39,6 @@ function loadLogin() {
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-             console.log('User logged in.');
              display1();
              displayform();
           }
@@ -97,18 +96,14 @@ submit1.onclick = function() {
                         alert(x);
                         display2();
                     } else{
-                       console.log('User logged in.');
-                       alert(x);
-                       display1();
+                        alert(x);
+                        display1();
                         displayform();
                     }
                 }
-                else if(request.status === 403)
-                {
+                else if(request.status === 403) {
                     alert('Incorrect credentials.');
-                }
-                else if(request.status === 500)
-                {
+                } else if(request.status === 500) {
                     alert('Unknown error');
                 }
             }
@@ -132,14 +127,10 @@ submit2.onclick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            console.log('back in main');
-            if (request.status === 200)
-            {
+            if (request.status === 200) {
                var x = JSON.parse(this.responseText);
                alert(x);
-            }
-            else
-            {
+            } else {
                 alert('Not able to register');
             }
         }
@@ -156,13 +147,10 @@ submit3.onclick = function() {
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
             console.log('back in main');
-            if (request.status === 200)
-            {
+            if (request.status === 200){
               display2();
               hideform();
-            }
-            else
-            {
+            } else {
               alert('Not logged out');
             }
         }
@@ -186,10 +174,10 @@ submit4.onclick = function() {
                         document.getElementById('comment').value = "";
                         document.getElementById('listing').value = "";
                         loadComments();
-                    } else{
+                    } else {
                         console.log((request.responseText));
                         alert('Not able to save comment.');
-                        }
+                    }
                 }};
         var comment = document.getElementById('comment').value;
         request.open('POST','http://aminavjith.imad.hasura-app.io/submit-comment/' + currentArticle, true);
