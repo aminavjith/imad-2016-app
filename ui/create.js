@@ -33,7 +33,6 @@ submit6.onclick = function(){
         request.onreadystatechange = function(){
             if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-                alert('Article was succesfully created.');
                 var newHTML =`
                  <a href="/" text-align="right">Home</a>
                  <h3>New article was created successfully.</h3>
@@ -45,7 +44,7 @@ submit6.onclick = function(){
                 var bodyx = document.getElementById('bodyx');
                 bodyx.innerHTML = newHTML;
             } else {
-                console.log((request.responseText));
+                console.log(request.responseText);
                 alert('Very sorry, but we are not able to save the article.');
             }
         }
