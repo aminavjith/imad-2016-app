@@ -16,7 +16,7 @@ function loadComments() {
                     var ul = document.getElementById('listing');
                     var commentLists = request.responseText;
                     
-                    if(commentLists === 'No comments posted.') {
+                    if(commentLists.value === 'No comments posted.') {
                         var noList = `<div class="comment" style="font-size:13px;" >
                             <p>No comments posted. </p>
                             </div>`;
@@ -39,7 +39,6 @@ function loadComments() {
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
     request.send('null');
-    request.responseType = 'text';
 }
 
 
