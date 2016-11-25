@@ -213,24 +213,15 @@ app.get('/articles/:articleName', function(req, res) {
 
 //to save comment
 app.post('/submit-comment/:articleId', function(req, res) {
-  var id = req.params.Id;
   var commentValue = req.body.comment;
-  pool.query("SELECT * FROM article WHERE id = $1", [id], function(err, result) {
-    if (err) {
-      res.status(500).send(err.toString());
-    } else if (result.rows.length === 0) {
-      res.status(404).send('File Not Found.');
-    } else {
-      var article_id = result.rows[0].id;
-      date = new Date();
-      pool.query("INSERT INTO comments (article_id, comment, user_id, timestamp) VALUES ($1, $2, $3, $4);", [article_id, commentValue, req.session.auth.userId, date], function(err, result) {
+  var article_id = req.params.articleId;
+  date = new Date();
+  pool.query("INSERT INTO comments (article_id, comment, user_id, timestamp) VALUES ($1, $2, $3, $4);", [article_id, commentValue, req.session.auth.userId, date], function(err, result) {
         if (err) {
             res.status(500).send(err.toString());
         } else {
             res.send('Comment submitted successfully');
         }
-      });
-    }
   });
 });
 
