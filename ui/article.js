@@ -10,7 +10,7 @@ function loadComments() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            var ul = document.getElementById('listing');
+            
             if (request.status === 200){
                 var commentLists = request.responseText;
                 var commentList = JSON.parse(commentLists);
@@ -22,13 +22,8 @@ function loadComments() {
                     <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
                     </div>`;
                 }
+                var ul = document.getElementById('listing');
                 ul.innerHTML = list;
-            } else {
-                console.log(request.responseText);
-                var noList = `<div class="comment" style="font-size:13px;" >
-                    <p>No comments posted. </p>
-                    </div>`;
-                ul.innerHTML = noList;
             } 
         }
     request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
