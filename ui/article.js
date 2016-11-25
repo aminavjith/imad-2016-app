@@ -22,7 +22,7 @@ function loadComments() {
                             </div>`;
                         ul.innerHTML = noList;
                     } else {
-                        commentList = JSON.parse(commentLists);
+                        var commentList = JSON.parse(commentLists);
                         var list = '';
                         for (var i = 0; i < commentList.length; i++ ){
                             var time = new Date(commentList[i].timestamp);
@@ -39,6 +39,7 @@ function loadComments() {
     };
     request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
     request.send('null');
+    request.responseType = 'text';
 }
 
 
@@ -151,7 +152,6 @@ submit3.onclick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            console.log('back in main');
             if (request.status === 200){
               display2();
               hideform();
@@ -180,7 +180,7 @@ submit4.onclick = function() {
                         document.getElementById('listing').value = "";
                         loadComments();
                     } else {
-                        console.log((request.responseText));
+                        console.log(request.responseText);
                         alert('Not able to save comment.');
                     }
                 }};
