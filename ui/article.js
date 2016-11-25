@@ -10,34 +10,30 @@ function loadComments() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            if (request.status === 200)
-                {
-                    var ul = document.getElementById('listing');
-                    var commentLists = request.responseText;
-                    var commentList = JSON.parse(commentLists);
-                    var list = '';
-                    if(commentList.length === 0){
-                        var noList = `<div class="comment" style="font-size:13px;" >
-                        <p>No comments posted. </p>
-                        </div>`;
-                        ul.innerHTML = noList;
-                    } else {
-                    for (var i = 0; i < commentList.length; i++ ){
-                        var time = new Date(commentList[i].timestamp);
-                        list += `<div class="comment" style="font-size:13px;" >
-                        <li>${escapeHTML(commentList[i].comment)}</li>
-                        <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
-                        </div>`;
-                    }
-                    ul.innerHTML = list;
-                    }
+            var ul = document.getElementById('listing');
+            if (request.status === 200){
+                var commentLists = request.responseText;
+                var commentList = JSON.parse(commentLists);
+                var list = '';
+                for (var i = 0; i < commentList.length; i++ ){
+                    var time = new Date(commentList[i].timestamp);
+                    list += `<div class="comment" style="font-size:13px;" >
+                    <li>${escapeHTML(commentList[i].comment)}</li>
+                    <p>${commentList[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} </p>
+                    </div>`;
                 }
+                ul.innerHTML = list;
+            } else if(request.status === 400) {
+                var noList = `<div class="comment" style="font-size:13px;" >
+                    <p>No comments posted. </p>
+                    </div>`;
+                ul.innerHTML = noList;
+            } 
         }
-    };
     request.open('GET','http://aminavjith.imad.hasura-app.io/load-comments/'+ currentArticle, true);
     request.send('null');
+};
 }
-
 
 //load Comment edit box to be able to enter comments.
 function loadLogin() {
@@ -45,12 +41,12 @@ function loadLogin() {
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
-             display1();
-             displayform();
-          } else {
-              alert('Please login to be able to enter comments');
-              display2();
-              hideform();
+                display1();
+                displayform();
+            } else {
+                alert('Please login to be able to enter comments');
+                display2();
+                hideform();
           }
         }
     };
