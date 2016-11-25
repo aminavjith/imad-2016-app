@@ -243,8 +243,6 @@ app.post('/save-article/', function(req, res) {
     } else {
         res.send('Article created successfully');
     }
-      });
-    }
   });
 });
 
