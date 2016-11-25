@@ -94,6 +94,10 @@ body{
     padding-top: 30px;
 }
 
+#img1:hover{
+    cursor: hand;
+}
+
 #img2{
   position: fixed;
   top: 150px;
