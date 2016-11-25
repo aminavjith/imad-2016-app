@@ -38,7 +38,10 @@ submit6.onclick = function(){
                  <a href="/" text-align="right">Home</a>
                  <h3>New article was created successfully.</h3>
                  <br>
-                 <hr>`;
+                 <hr>
+                 <form action="/ui/create-article.html/"> 
+                    <button type="submit" id="create-article" class="submit5" style="display:none;">Click to create another article</button>
+                 </form> `;
                 var bodyx = document.getElementById('bodyx');
                 bodyx.innerHTML = newHTML;
             } else {
