@@ -8,8 +8,8 @@ function loadLogin() {
              console.log('User logged in.');
           } else{
              var newHTML =`
-             <a href="/" text-align="right">Home</a>
-             <h3>Please login  by going <span href="/"> HOME</span> to be able to create an article</h3>
+             <br>
+             <h3>Please login from <span href="/"> HOME</span> to be able to create an article</h3>
              <br>
              <hr>`;
              var bodyx = document.getElementById('bodyx');
@@ -34,7 +34,7 @@ submit6.onclick = function(){
             if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
                 var newHTML =`
-                 <a href="/" text-align="right">Home</a>
+                 <br>
                  <h3>New article was created successfully.</h3>
                  <br>
                  <hr>
