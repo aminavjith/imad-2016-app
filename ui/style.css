@@ -181,5 +181,5 @@ li1.dropdown {
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+    display: inline;
 }
