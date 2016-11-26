@@ -140,11 +140,11 @@ ul1 {
     background: grey;
 }
 
-li {
+li1 {
     float: left;
 }
 
-li a, .dropbtn {
+li1 a, .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
@@ -152,11 +152,11 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+li1 a:hover, .dropdown:hover .dropbtn {
     background-color: grey;
 }
 
-li.dropdown {
+li1.dropdown {
     display: inline-block;
 }
 
