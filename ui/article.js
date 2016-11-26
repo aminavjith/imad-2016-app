@@ -130,7 +130,7 @@ submit2.onclick = function() {
         if(request.readyState === XMLHttpRequest.DONE){
             if (request.status === 200) {
                var x = JSON.parse(this.responseText);
-               alert(x);
+               console.log(x);
             } else {
                 alert('Not able to register');
             }
