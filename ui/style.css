@@ -135,10 +135,10 @@ body{
 
 ul1 {
     list-style-type: none;
-    margin: 50px;
+    margin: 0px;
     padding: 0;
     overflow: hidden;
-    background: #3a73ab;
+    background: grey;
 }
 
 li {
