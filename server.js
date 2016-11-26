@@ -275,6 +275,10 @@ app.get('/ui/create-article.html/', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'create-article.html'));
 });
 
+app.get('/ui/about-me.html/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'about-me.html'));
+});
+
 app.get('/ui/test.html/', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'test.html'));
 });
