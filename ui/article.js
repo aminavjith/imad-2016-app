@@ -44,12 +44,19 @@ function loadLogin() {
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
             if (request.status === 200) {
+                var commentform = document.getElementById('commentform');
+                var createComment = `
+                    <p>Enter your comments here:</p>
+                    <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
+                    <input type="button" id="submit-comment" class="submit4" value="Submit Comment"/>`;
+                commentform.innerHTML = createComment;
                 display1();
-                displayform();
             } else {
-                alert('Please login to be able to enter comments');
+                var commentform = document.getElementById('commentform');
+                var createComment = `
+                    <p>Please login to enter comments.</p>`;
+                commentform.innerHTML = createComment;
                 display2();
-                hideform();
           }
         }
     };
