@@ -25,7 +25,7 @@ submit1.onclick = function() {
     var password = document.getElementById('password').value;
     if(username === "") {
         var userMsg = document.getElementById('userMsg');
-        var msg1 = `<p style="color:red; display:none;">Please enter username</p>`;
+        var msg1 = `<p style="color:red;">Please enter username</p>`;
         userMsg.innerHTML = msg1;
     } else if(password === ""){
         var pwdMsg = document.getElementById('pwdMsg');
