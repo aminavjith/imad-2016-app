@@ -78,11 +78,9 @@ function createArticleTemplate(data) {
         ${date.toDateString()}<br>
         ${content}
         <hr>
-        <div id="commentform">
-        </div>
+        <div id="commentform"> </div>
         <p>Comments appear below:</p>
-        <ul id="listing">
-        </ul>
+        <ul id="listing"> </ul>
       </div>
      </body>
       <script type="text/javascript" src="/ui/article.js">
