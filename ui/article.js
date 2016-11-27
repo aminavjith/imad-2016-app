@@ -45,16 +45,11 @@ function loadLogin() {
         if (request.readyState === XMLHttpRequest.DONE) {
             var commentform = document.getElementById('commentform');
             if (request.status === 200) {
-                var createComment = `
-                    <p>Enter your comments here:</p>
-                    <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
-                    <input type="button" id="submit-comment" class="submit4" value="Submit Comment"/>`;
-                commentform.innerHTML = createComment;
                 display1();
+                displayForm();
             } else {
-                var createNoComment = `<p>Please login to enter comments.</p>`;
-                commentform.innerHTML = createNoComment;
                 display2();
+                hideForm();
           }
         }
     };
@@ -72,6 +67,14 @@ function display1() {
 function display2() {
     document.getElementById("login").style.display = "inline";
     document.getElementById("logout").style.display = "none";
+}
+
+function displayForm(){
+    document.getElementById("commentform").style.display = "inline";
+}
+
+function hideForm(){
+    document.getElementById("commentform").style.display = "none";
 }
 
 //to log in
@@ -92,15 +95,10 @@ submit1.onclick = function() {
                     var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
                         alert(x);
-                        display2();
+                        hideForm();
                     } else {
                         display1();
-                        var commentform = document.getElementById('commentform');
-                        var createComment = `
-                            <p>Enter your comments here:</p>
-                            <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
-                            <input type="button" id="submit-comment" class="submit4" value="Submit Comment"/>`;
-                        commentform.innerHTML = createComment;
+                        displayForm();
                     }
                 } else if(request.status === 403) {
                     alert('Incorrect credentials.');
@@ -149,7 +147,7 @@ submit3.onclick = function() {
         if(request.readyState === XMLHttpRequest.DONE){
             if (request.status === 200){
               display2();
-              hideform();
+              hideForm();
             } else {
               alert('Not logged out');
             }
