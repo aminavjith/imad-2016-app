@@ -43,8 +43,8 @@ function loadLogin() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (request.readyState === XMLHttpRequest.DONE) {
+            var commentform = document.getElementById('commentform');
             if (request.status === 200) {
-                var commentform = document.getElementById('commentform');
                 var createComment = `
                     <p>Enter your comments here:</p>
                     <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
@@ -52,10 +52,8 @@ function loadLogin() {
                 commentform.innerHTML = createComment;
                 display1();
             } else {
-                var commentform = document.getElementById('commentform');
-                var createComment = `
-                    <p>Please login to enter comments.</p>`;
-                commentform.innerHTML = createComment;
+                var createNoComment = `<p>Please login to enter comments.</p>`;
+                commentform.innerHTML = createNoComment;
                 display2();
           }
         }
@@ -74,16 +72,6 @@ function display1() {
 function display2() {
     document.getElementById("login").style.display = "inline";
     document.getElementById("logout").style.display = "none";
-}
-
-//to display comment form
-function displayform() {
-    document.getElementById("commentform").style.display = "inline";
-}
-
-//to hide comment form
-function hideform() {
-    document.getElementById("commentform").style.display = "none";
 }
 
 //to log in
@@ -107,7 +95,12 @@ submit1.onclick = function() {
                         display2();
                     } else {
                         display1();
-                        displayform();
+                        var commentform = document.getElementById('commentform');
+                        var createComment = `
+                            <p>Enter your comments here:</p>
+                            <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
+                            <input type="button" id="submit-comment" class="submit4" value="Submit Comment"/>`;
+                        commentform.innerHTML = createComment;
                     }
                 } else if(request.status === 403) {
                     alert('Incorrect credentials.');
