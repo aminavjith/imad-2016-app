@@ -17,29 +17,6 @@ function loadLogin() {
     request.send('null');
 }
 
-//to get article list
-function onLoad(){
-   console.log('load articlelist');
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState === XMLHttpRequest.DONE){
-            if (request.status === 200){
-                    var articleList = request.responseText;
-                    //console.log((request.responseText));
-                    articleList = JSON.parse(articleList);
-                    var list = '';
-                    for (var i = 0; i < articleList.length; i++ ){
-                        //<a href="/articles/1"> HTML </a> <br>
-                        list += `<a href="/articles/${articleList[i].id}">   ${articleList[i].heading} </a> <br>`;
-                        }
-                    var ul = document.getElementById('articleList');
-                    ul.innerHTML = list;
-                }
-            }
-    };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/listing', true);
-    request.send('null');
-}
 
 //to log in
 var submit1 = document.getElementById('submit-user');
@@ -48,7 +25,7 @@ submit1.onclick = function() {
     var password = document.getElementById('password').value;
     if(username === "") {
         var userMsg = document.getElementById('userMsg');
-        var msg1 = `<p>Please enter username</p>`;
+        var msg1 = `<p style="color:red; display:none;">Please enter username</p>`;
         userMsg.innerHTML = msg1;
     } else if(password === ""){
         var pwdMsg = document.getElementById('pwdMsg');
