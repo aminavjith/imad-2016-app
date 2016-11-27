@@ -131,6 +131,10 @@ body{
   width: 600px;
 }
 
+#username, #userMsg {
+    display: inline-block;
+  }
+
 ul1 {
     list-style-type: none;
     margin-left: 50px;
