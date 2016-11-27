@@ -29,7 +29,7 @@ submit1.onclick = function() {
         userMsg.innerHTML = msg1;
     } else if(password === ""){
         var pwdMsg = document.getElementById('pwdMsg');
-        var msg2 = `<p>Please enter password</p>`;
+        var msg2 = `<p style="color:red;">Please enter password</p>`;
         pwdMsg.innerHTML = msg2;
     } else{
         console.log('logging in');
@@ -40,7 +40,7 @@ submit1.onclick = function() {
                     var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
                         var loginMsg = document.getElementById('loginMsg');
-                        var msg3 = `<p>Credentials are invalid.</p>`;
+                        var msg3 = `<p style="color:red;">Credentials are invalid.</p>`;
                         loginMsg.innerHTML = msg3;
                         display2();
                     } else {
@@ -66,11 +66,11 @@ submit2.onclick = function() {
     var password = document.getElementById('password').value;
     if(username === "") {
         var userMsg = document.getElementById('userMsg');
-        var msg1 = `<p>Please enter username</p>`;
+        var msg1 = `<p style="color:red;">Please enter username</p>`;
         userMsg.innerHTML = msg1;
     } else if(password === ""){
         var pwdMsg = document.getElementById('pwdMsg');
-        var msg2 = `<p>Please enter password</p>`;
+        var msg2 = `<p style="color:red;">Please enter password</p>`;
         pwdMsg.innerHTML = msg2;
     } else{
     console.log('register');
