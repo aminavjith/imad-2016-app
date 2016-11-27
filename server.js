@@ -66,7 +66,13 @@ function createArticleTemplate(data) {
             </body2>
             <ul1 class="navbar">
                 <li1><a href="/">Home</a></li1>
-                <li1><a href="/ui/about-me.html" class="dropbtn">About</a></li1>
+                <li1 class="dropdown">
+                    <a href="#" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="/ui/about-me.html">Myself</a>
+                        <a href="/ui/the-site.html">The site</a>
+                    </div>
+                </li1>
             </ul1>
         </div>
       <br>
