@@ -84,7 +84,11 @@ function createArticleTemplate(data) {
         ${date.toDateString()}<br>
         ${content}
         <hr>
-        <div id="commentform"> </div>
+        <div id="commentform" style="display:none";>
+            <p>Enter your comments here:</p>
+            <textarea type="text" placeholder="Enter your comment here." id="comment" cols="50" rows="5"/></textarea><br>
+            <input type="button" id="submit-comment" class="submit4" value="Submit Comment"/>
+        </div>
         <p>Comments appear below:</p>
         <ul id="listing"> </ul>
       </div>
