@@ -1,4 +1,4 @@
-onLoad ();
+
 loadLogin();
 //check-login
 function loadLogin() {
