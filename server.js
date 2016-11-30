@@ -64,16 +64,18 @@ function createArticleTemplate(data) {
                     <input type="button" id="logout-user" class="submit3" value="Log Out"/>
                  </div>
             </body2>
-            <ul1 class="navbar">
-                <li1><a href="/">Home</a></li1>
-                <li1 class="dropdown">
-                    <a href="#" class="dropbtn">About</a>
-                    <div class="dropdown-content">
-                        <a href="/ui/about-me.html">Myself</a>
-                        <a href="/ui/the-site.html">The site</a>
-                    </div>
-                </li1>
-            </ul1>
+            <div class="navbar">
+    <ul1 >
+          <li1><a href="/" style="margin-left:50px;">Home</a></li1>
+          <li1 class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+                <a href="/ui/about-me.html">Myself</a>
+                <a href="/ui/the-site.html">The site</a>
+            </div>
+          </li1>
+    </ul1>
+</div>
         </div>
       <br>
       <div class="bodyx">
