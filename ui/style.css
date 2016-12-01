@@ -83,6 +83,12 @@ body{
   left: 90px;
 }
 
+.errmsg{
+    left: 800px;
+    margin-top:95px;
+    color: red;
+}
+
 #userarea {
     left: 700px;
     top: 10px;
