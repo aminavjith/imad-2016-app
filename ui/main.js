@@ -47,7 +47,11 @@ submit1.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     if(username === "" || password === ""){
-        alert('Please enter both username and password to login.');
+        var errMsg = document.getElementById('errmsg');
+        dispMsg1 = `<px>Please enter both username and password to login.</px>`;
+        errMsg.innerHTML = dispMsg1;
+       // alert('Please enter both username and password to login.');
+        
     } else{
         console.log('logging in');
         var request = new XMLHttpRequest();
