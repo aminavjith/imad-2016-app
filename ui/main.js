@@ -1,7 +1,9 @@
 onLoad ();
 loadLogin();
-var fade_out = function() {
-  $("#errmsg").fadeOut();
+
+
+function fadeOut(errmsg) {
+  errmsg.fadeOut();
 }
 
 
