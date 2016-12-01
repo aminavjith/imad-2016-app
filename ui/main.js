@@ -1,5 +1,10 @@
 onLoad ();
 loadLogin();
+var fade_out = function() {
+  $("#errmsg").fadeOut();
+}
+
+
 //check-login
 function loadLogin() {
     var request = new XMLHttpRequest();
@@ -48,11 +53,11 @@ submit1.onclick = function() {
     var password = document.getElementById('password').value;
     if(username === "" || password === ""){
         var errMsg = document.getElementById('errmsg');
-        document.getElementById("errmsg").style.display = "inline";
         dispMsg1 = `<px>Please enter both username and password to login.</px>`;
         errMsg.innerHTML = dispMsg1;
+        document.getElementById("errmsg").style.display = "inline";
+        setTimeout(fade_out, 5000);
        // alert('Please enter both username and password to login.');
-        
     } else{
         console.log('logging in');
         var request = new XMLHttpRequest();
@@ -61,7 +66,11 @@ submit1.onclick = function() {
                 if (request.status === 200){
                     var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
-                        alert(x);
+                        var errMsg = document.getElementById('errmsg');
+                        dispMsg1 = `<px>Invalid credentials.</px>`;
+                        errMsg.innerHTML = dispMsg1;
+                        document.getElementById("errmsg").style.display = "inline";
+                        setTimeout(fade_out, 5000);
                         display2();
                     } else {
                        console.log('User logged in.');
@@ -143,6 +152,8 @@ function display2() {
     noLogin = `<p> Login to be able to enter comments and to create new articles. </p>`;
     footerNoLogin.innerHTML = noLogin;
 }
+
+
 
 
 
