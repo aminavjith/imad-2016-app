@@ -241,10 +241,11 @@ app.post('/submit-comment/:articleId', function(req, res) {
 
 //to save article
 app.post('/save-article/', function(req, res) {
+  var category = req.body.category;
   var heading = req.body.heading;
   var content = req.body.content;
   var date = new Date();
-  pool.query("INSERT INTO article (heading, date, content) VALUES ($1, $2, $3);", [heading, date, content], function(err, result) {
+  pool.query("INSERT INTO article (heading, date, content, category) VALUES ($1, $2, $3, $4);", [heading, date, content, category], function(err, result) {
     if (err) {
         res.status(500).send(err.toString());
     } else {
