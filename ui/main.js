@@ -153,7 +153,7 @@ submit3.onclick = function() {
             if (request.status === 200) {
               display2();
             } else {
-                dispMsg = `<px>You are successfully logged out.</px>`;
+                dispMsg = `<px>Unknown error, unable to log out now.</px>`;
                 errMsg.innerHTML = dispMsg;
                 document.getElementById("errmsg").style.display = "inline";
                 setTimeout(function(){ 
