@@ -198,7 +198,8 @@ app.get('/load-comments/:articleId', function(req, res) {
 
 //endpoint to display list of articles
 app.get('/listing', function(req, res) {
-  pool.query("SELECT id, title, heading FROM article WHERE category = 'coding'", function(err, result) {
+    var categoryVal = 'coding';
+  pool.query("SELECT id, title, heading FROM article WHERE category = $1",[categoryVal], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
