@@ -25,8 +25,14 @@ var submit6 = document.getElementById('save-article');
 submit6.onclick = function(){
     var heading = document.getElementById('heading').value;
     var content = document.getElementById('content').value;
+    var errMsg = document.getElementById('errmsg1');
      if(heading === '' || content === ''){
-        alert('Please enter heading and content in order to save this article.');
+        dispMsg = `<px>Please fill in the fields to continue.</px>`;
+        errMsg.innerHTML = dispMsg;
+        document.getElementById("errmsg").style.display = "inline";
+        setTimeout(function(){ 
+            document.getElementById("errmsg").style.display = "none"; 
+        }, 5000);
     } else {
         var upHeading = heading.toUpperCase();
         var request = new XMLHttpRequest();
