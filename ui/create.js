@@ -23,6 +23,7 @@ function loadLogin() {
 
 var submit6 = document.getElementById('save-article');
 submit6.onclick = function(){
+    var category = document.getElementById('category').value;
     var heading = document.getElementById('heading').value;
     var content = document.getElementById('content').value;
     var errMsg = document.getElementById('errmsg1');
@@ -63,7 +64,7 @@ submit6.onclick = function(){
     };
     request.open('POST', 'http://aminavjith.imad.hasura-app.io/save-article', true);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify({heading: upHeading, content: content}));
+    request.send(JSON.stringify({category: category, heading: upHeading, content: content}));
     request.responseType = 'text';
 }};
 
