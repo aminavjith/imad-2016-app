@@ -27,6 +27,7 @@ submit6.onclick = function(){
     var content = document.getElementById('content').value;
     var errMsg = document.getElementById('errmsg1');
      if(heading === '' || content === ''){
+        console.log('error');
         dispMsg = `<px>Please fill in the fields to continue.</px>`;
         errMsg.innerHTML = dispMsg;
         document.getElementById("errmsg").style.display = "inline";
