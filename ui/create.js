@@ -32,7 +32,7 @@ submit6.onclick = function(){
         errMsg.innerHTML = dispMsg;
         errMsg.style.display = "inline";
         setTimeout(function(){ 
-            errMsg = "none"; 
+            errMsg.style.display = "none"; 
         }, 5000);
     } else {
         var upHeading = heading.toUpperCase();
@@ -54,9 +54,9 @@ submit6.onclick = function(){
                 var x = request.responseText;
                 dispMsg = `<px></px>`;
                 errMsg.innerHTML = dispMsg;
-                document.getElementById("errmsg1").style.display = "inline";
+                errMsg.style.display = "inline";
                 setTimeout(function(){ 
-                    document.getElementById("errmsg1").style.display = "none"; 
+                    errMsg.style.display = "none"; 
                 }, 5000);
             }
         }
