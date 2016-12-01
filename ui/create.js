@@ -28,11 +28,11 @@ submit6.onclick = function(){
     var errMsg = document.getElementById('errmsg1');
      if(heading === '' || content === ''){
         console.log('error');
-        dispMsg = `<px>Please fill in the fields to continue.</px>`;
+        dispMsg = `<px>Please fill in all the fields to continue.</px>`;
         errMsg.innerHTML = dispMsg;
-        document.getElementById("errmsg").style.display = "inline";
+        errMsg.style.display = "inline";
         setTimeout(function(){ 
-            document.getElementById("errmsg").style.display = "none"; 
+            errMsg = "none"; 
         }, 5000);
     } else {
         var upHeading = heading.toUpperCase();
@@ -51,8 +51,13 @@ submit6.onclick = function(){
                 var bodyx = document.getElementById('bodyx');
                 bodyx.innerHTML = newHTML;
             } else {
-                console.log(request.responseText);
-                alert('Very sorry, but we are not able to save the article.');
+                var x = request.responseText;
+                dispMsg = `<px></px>`;
+                errMsg.innerHTML = dispMsg;
+                document.getElementById("errmsg1").style.display = "inline";
+                setTimeout(function(){ 
+                    document.getElementById("errmsg1").style.display = "none"; 
+                }, 5000);
             }
         }
     };
