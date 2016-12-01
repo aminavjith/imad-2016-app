@@ -34,10 +34,17 @@
     <br>
     <div id="text2">
         <br>
-        <br>
         <p> Enter the details of the article you want to create:</p> 
         <span id="errmsg1" >text </span>
-        
+    <div id="categoryarea"> Category: <br>
+        <form action="action_page.php">
+            <select name="category">
+                <option value="coding">Coding</option>
+                <option value="travel">Travel</option>
+            </select>
+        </form>
+        <br>
+    </div>
     <div id="headingarea"> Heading: <br>
         <textarea type="text" placeholder="Enter heading here." id="heading" cols="50" rows="1"></textarea>
         <br>
