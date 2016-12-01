@@ -13,7 +13,7 @@ function loadLogin() {
              console.log('User logged in.');
              display1();
           } else{
-              display2();
+             display2();
           }
         }
     };
@@ -122,7 +122,7 @@ submit2.onclick = function() {
             console.log('back in main');
             if (request.status === 200) {
                var x = JSON.parse(this.responseText);
-               dispMsg = `<px>You are registered successfully.r</px>`;
+               dispMsg = `<px>${x}</px>`;
                errMsg.innerHTML = dispMsg;
                document.getElementById("errmsg").style.display = "inline";
                setTimeout(function(){ 
