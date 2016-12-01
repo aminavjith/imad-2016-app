@@ -48,6 +48,7 @@ submit1.onclick = function() {
     var password = document.getElementById('password').value;
     if(username === "" || password === ""){
         var errMsg = document.getElementById('errmsg');
+        document.getElementById("errmsg").style.display = "inline";
         dispMsg1 = `<px style="display:inline;">Please enter both username and password to login.</px>`;
         errMsg.innerHTML = dispMsg1;
        // alert('Please enter both username and password to login.');
