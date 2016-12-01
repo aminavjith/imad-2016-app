@@ -90,6 +90,11 @@ body{
     font-size: 16px;
 }
 
+#errmsg1{
+    color: red;
+    font-size: 16px;
+}
+
 #userarea {
     left: 700px;
     top: 10px;
