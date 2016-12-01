@@ -82,27 +82,47 @@ submit1.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     if(username === "" || password === ""){
-        alert('Please enter both username and password to login.');
-        document.getElementById('username').value = "";
-        document.getElementById('password').value = "";
+        var errMsg = document.getElementById('errmsg');
+        dispMsg = `<px>Please enter both username and password to login.</px>`;
+        errMsg.innerHTML = dispMsg;
+        document.getElementById("errmsg").style.display = "inline";
+        setTimeout(function(){ 
+            document.getElementById("errmsg").style.display = "none"; 
+        }, 5000);
     } else{
         console.log('logging in');
         var request = new XMLHttpRequest();
         request.onreadystatechange = function(){
+            var errMsg = document.getElementById('errmsg');
             if(request.readyState === XMLHttpRequest.DONE){
                 if (request.status === 200){
                     var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
-                        alert(x);
-                        hideForm();
+                        display2();
+                        dispMsg = `<px>Invalid credentials.</px>`;
+                        errMsg.innerHTML = dispMsg;
+                        document.getElementById("errmsg").style.display = "inline";
+                        setTimeout(function(){ 
+                            document.getElementById("errmsg").style.display = "none"; 
+                        }, 5000);
                     } else {
-                        display1();
-                        displayForm();
+                       console.log('User logged in.');
+                       display1();
                     }
                 } else if(request.status === 403) {
-                    alert('Incorrect credentials.');
+                    dispMsg = `<px>Username/ password doesnot exist</px>`;
+                    errMsg.innerHTML = dispMsg;
+                    document.getElementById("errmsg").style.display = "inline";
+                    setTimeout(function(){ 
+                        document.getElementById("errmsg").style.display = "none"; 
+                    }, 5000);
                 } else if(request.status === 500) {
-                    alert('Unknown error');
+                    dispMsg = `<px>Unknown Error on sign in</px>`;
+                    errMsg.innerHTML = dispMsg;
+                    document.getElementById("errmsg").style.display = "inline";
+                    setTimeout(function(){ 
+                        document.getElementById("errmsg").style.display = "none"; 
+                    }, 5000);
                 }
             }
         };
@@ -111,25 +131,41 @@ submit1.onclick = function() {
     request.send(JSON.stringify({username: username, password: password}));
 }};
 
-
 // To register
 var submit2 = document.getElementById('register');
 submit2.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
+    var errMsg = document.getElementById('errmsg');
     if(username === '' || password === ''){
-        alert('Please enter both username and password to register.');
+        dispMsg = `<px>Please enter new username and password to register</px>`;
+        errMsg.innerHTML = dispMsg;
+        document.getElementById("errmsg").style.display = "inline";
+        setTimeout(function(){ 
+            document.getElementById("errmsg").style.display = "none"; 
+        }, 5000);
         return;
     } else{
     console.log('register');
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
+            console.log('back in main');
             if (request.status === 200) {
                var x = JSON.parse(this.responseText);
-               console.log(x);
+               dispMsg = `<px>${x}</px>`;
+               errMsg.innerHTML = dispMsg;
+               document.getElementById("errmsg").style.display = "inline";
+               setTimeout(function(){ 
+                    document.getElementById("errmsg").style.display = "none"; 
+               }, 5000);
             } else {
-                alert('Not able to register');
+                dispMsg = `<px>Please enter new username and password to register</px>`;
+                errMsg.innerHTML = dispMsg;
+                document.getElementById("errmsg").style.display = "inline";
+                setTimeout(function(){ 
+                    document.getElementById("errmsg").style.display = "none"; 
+                }, 5000);
             }
         }
     };
@@ -144,11 +180,16 @@ submit3.onclick = function() {
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.readyState === XMLHttpRequest.DONE){
-            if (request.status === 200){
+            console.log('back in main');
+            if (request.status === 200) {
               display2();
-              hideForm();
             } else {
-              alert('Not logged out');
+                dispMsg = `<px>Unknown error, unable to log out now.</px>`;
+                errMsg.innerHTML = dispMsg;
+                document.getElementById("errmsg").style.display = "inline";
+                setTimeout(function(){ 
+                document.getElementById("errmsg").style.display = "none"; 
+                }, 5000);
             }
         }
     };
