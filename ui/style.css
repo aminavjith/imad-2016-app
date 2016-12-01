@@ -83,7 +83,7 @@ body{
   left: 90px;
 }
 
-.errmsg{
+#errmsg{
     left: 800px;
     margin-top:95px;
     color: red;
