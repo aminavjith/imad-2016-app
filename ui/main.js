@@ -58,7 +58,7 @@ submit1.onclick = function() {
         dispMsg1 = `<px>Please enter both username and password to login.</px>`;
         errMsg.innerHTML = dispMsg1;
         document.getElementById("errmsg").style.display = "inline";
-        setTimeout(fade_out, 5000);
+        setTimeout(fadeOut, 5000);
        // alert('Please enter both username and password to login.');
     } else{
         console.log('logging in');
