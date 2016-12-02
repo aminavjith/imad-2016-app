@@ -149,6 +149,13 @@ function createArticleTemplate(data) {
     <ul1 >
           <li1><a href="/" style="margin-left:50px;">Home</a></li1>
           <li1 class="dropdown">
+            <a href="#" class="dropbtn">Writings</a>
+            <div class="dropdown-content">
+              <a href="/category/travel">Travel</a>
+              <a href="/category/coding">Coding</a>
+            </div>
+          </li1>
+          <li1 class="dropdown">
             <a href="#" class="dropbtn">About</a>
             <div class="dropdown-content">
                 <a href="/ui/about-me.html">Myself</a>
