@@ -1,4 +1,4 @@
-
+var currentArticle = window.location.pathname.split('/')[2];
 var timest = 5000;
 onLoad ();
 loadLogin();
