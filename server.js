@@ -26,6 +26,87 @@ app.use(session({
   saveUninitialized: true
 }));
 
+function createLandingTemplate(articleCategory) {
+    var HTMLTemplate = `<html>
+    <head>
+        <title>
+      ${articleCategory}
+    </title>
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+    <link  type="text/css" href="/ui/style.css" rel="stylesheet" />
+    <link  href="/favicon.ico" rel="icon" />
+  </head>
+
+<body>
+  <div class = "header">
+    <a href="/">
+        <img id="img1" src="/ui/logo.jpg" style="height:50px; width:50px;"/>
+    </a>
+    <div id="text1" class="header"> Learning to create webapps
+    </div>
+
+  <body1 id="login" >
+
+    <div id="userarea" class="header"> Username <br>
+        <input placeholder="Username" id="username" type="name"/> 
+    </div>
+    <div id="passwordarea" class="header"> Password: <br>
+        <input placeholder="Password" id="password" type="password" />
+        <span id="errmsg" style="display:none;"> </span>
+    </div>
+        <input type="button" id="submit-user" class="submit1" value="Login"/>
+        <input type="button" id="register" class="submit2" value="Register"/>
+  </body1>
+
+  <body2 id="logout" style="display:none;">
+    <div id="userarea" class="header"> You are now signed in. <br>
+        <input type="button" id="logout-user" class="submit3" value="Log Out"/>
+    </div>
+  </body2>
+</div>
+
+<div class="navbar">
+    <ul1 >
+          <li1><a href="/" style="margin-left:50px;">Home</a></li1>
+          <li1 class="dropdown">
+            <a href="#" class="dropbtn">Writings</a>
+            <div class="dropdown-content">
+              <a href="/category/travel">Travel</a>
+              <a href="/category/coding">Coding</a>
+            </div>
+          </li1>
+          <li1 class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+                <a href="/ui/about-me.html">Myself</a>
+                <a href="/ui/the-site.html">The site</a>
+            </div>
+          </li1>
+    </ul1>
+</div>
+
+<div class="bodyx">
+  <div id="text2">
+    <p> Click to browse these articles on ${articleCategory}.</p>
+    <y id="articleList">
+    </y>
+    
+  </div>
+  <div id="img2">
+      <img src="/ui/${articleCategory}.jpg" style="height: 400px; width: 700px;"/>
+  </div>
+</div>
+<hr>
+<hr>
+<div class="footer" id="footer">
+</div>
+
+<script type="text/javascript" src="/ui/main.js">
+    </script>
+</body>
+</html>`;
+return HTMLTemplate;
+}
 
 function createArticleTemplate(data) {
   var title = data.title;
@@ -227,15 +308,8 @@ app.get('/articles/:articleName', function(req, res) {
 
 //endpoint to display landing
 app.get('/category/:articleCategory', function(req, res) {
-  //var articleName= req.params.articleName;
-  pool.query("SELECT * FROM article WHERE id = $1", [req.params.articleName], function(err, result) {
-    if (err) {
-      res.status(500).send(err.toString());
-    } else if (result.rows.length === 0) {
-      res.status(404).send('File Not Found.');
-    } else {
-      var articleData = result.rows[0];
-      res.send(createArticleTemplate(articleData));
+    var articleCategory= req.params.articleCategory;
+    res.send(createLandingTemplate(articleCategory));
     }
   });
 });
@@ -330,8 +404,8 @@ app.get('/ui/test.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'test.js'));
 });
 
-app.get('/ui/learn_code.jpg', function(req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'learn_code.jpg'));
+app.get('/ui/coding.jpg', function(req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'coding.jpg'));
 });
 
 app.get('/ui/travel.jpg', function(req, res) {
