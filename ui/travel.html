@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      Profile
+    </title>
+    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
+    <link  type="text/css" href="/ui/style.css" rel="stylesheet" />
+    <link  href="/favicon.ico" rel="icon" />
+  </head>
+
+<body>
+  <div class = "header">
+    <a href="/">
+        <img id="img1" src="/ui/logo.jpg" style="height:50px; width:50px;"/>
+    </a>
+    <div id="text1" class="header"> Learning to create webapps
+    </div>
+
+  <body1 id="login" >
+
+    <div id="userarea" class="header"> Username <br>
+        <input placeholder="Username" id="username" type="name"/> 
+    </div>
+    <div id="passwordarea" class="header"> Password: <br>
+        <input placeholder="Password" id="password" type="password" />
+        <span id="errmsg" style="display:none;"> </span>
+    </div>
+        <input type="button" id="submit-user" class="submit1" value="Login"/>
+        <input type="button" id="register" class="submit2" value="Register"/>
+  </body1>
+
+  <body2 id="logout" style="display:none;">
+    <div id="userarea" class="header"> You are now signed in. <br>
+        <input type="button" id="logout-user" class="submit3" value="Log Out"/>
+    </div>
+  </body2>
+</div>
+
+<div class="navbar">
+    <ul1 >
+          <li1><a href="/" style="margin-left:50px;">Home</a></li1>
+          <li1 class="dropdown">
+            <a href="#" class="dropbtn">Writings</a>
+            <div class="dropdown-content">
+              <a href="/ui/travel.html">Travel</a>
+              <a href="/ui/coding.html">Coding</a>
+            </div>
+          </li1>
+          <li1 class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+                <a href="/ui/about-me.html">Myself</a>
+                <a href="/ui/the-site.html">The site</a>
+            </div>
+          </li1>
+    </ul1>
+</div>
+
+<div class="bodyx">
+  <div id="text2">
+    <p> Click to browse these articles on places.</p>
+    <y id="articleList">
+    </y>
+    
+  </div>
+  <div id="img2">
+      <img src="/ui/learn_code.jpg" style="height: 400px; width: 700px;"/>
+  </div>
+</div>
+<hr>
+<hr>
+<div class="footer" id="footer">
+</div>
+
+<script type="text/javascript" src="/ui/main.js">
+    </script>
+</body>
+</html>
