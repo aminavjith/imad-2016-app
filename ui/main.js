@@ -1,4 +1,4 @@
-var articleCategory = window.location.pathname.split('/')[2];
+//var articleCategory = window.location.pathname.split('/')[2];
 var timest = 5000;
 onLoad ();
 loadLogin();
@@ -41,7 +41,7 @@ function onLoad(){
                 }
             }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/listing/category='+ articleCategory, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/listing/', true);
     request.send('null');
 }
 
