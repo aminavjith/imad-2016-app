@@ -8,6 +8,7 @@ function loadLogin() {
             if (request.status === 200) {
              console.log('User logged in.');
              display1();
+             
           } else{
               display2();
           }
@@ -150,4 +151,19 @@ function display2() {
     document.getElementById("logout").style.display = "none"
 }
 
+//to display create-article
+function footerDisplay(){
+    var footerLogin = document.getElementById("footer");
+    Login = `<form action="/ui/create-article.html/"> 
+                <button type="submit" id="create-article" class="submit5">Click to create new article</button>
+            </form> `;
+    footerLogin.innerHTML = Login;
+}
+
+//hiding create-article button
+function footerHide(){
+    var footerNoLogin = document.getElementById("footer");
+    noLogin = `<p> Login to be able to enter comments and to create new articles. </p>`;
+    footerNoLogin.innerHTML = noLogin;
+}
 
