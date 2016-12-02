@@ -300,6 +300,10 @@ app.get('/ui/the-site.html/', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'the-site.html'));
 });
 
+app.get('/ui/travel.html', function(req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'travel.html'));
+});
+
 app.get('/ui/page.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'page.js'));
 });
@@ -310,6 +314,10 @@ app.get('/ui/test.js', function(req, res) {
 
 app.get('/ui/learn_code.jpg', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'learn_code.jpg'));
+});
+
+app.get('/ui/travel.jpg', function(req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'travel.jpg'));
 });
 
 app.get('/ui/logo.jpg', function(req, res) {
