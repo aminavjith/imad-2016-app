@@ -8,8 +8,10 @@ function loadLogin() {
             if (request.status === 200) {
              console.log('User logged in.');
              display1();
+             footerDisplay();
           } else{
               display2();
+              footerHide();
           }
         }
     };
@@ -17,40 +19,53 @@ function loadLogin() {
     request.send('null');
 }
 
-
 //to log in
 var submit1 = document.getElementById('submit-user');
 submit1.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    if(username === "") {
-        var userMsg = document.getElementById('userMsg');
-        var msg1 = `<p style="color:red;">Please enter username</p>`;
-        userMsg.innerHTML = msg1;
-    } else if(password === ""){
-        var pwdMsg = document.getElementById('pwdMsg');
-        var msg2 = `<p style="color:red;">Please enter password</p>`;
-        pwdMsg.innerHTML = msg2;
+    if(username === "" || password === ""){
+        var errMsg = document.getElementById('errmsg');
+        dispMsg = `<px>Please enter both username and password to login.</px>`;
+        errMsg.innerHTML = dispMsg;
+        document.getElementById("errmsg").style.display = "inline";
+        setTimeout(function(){ 
+            document.getElementById("errmsg").style.display = "none"; 
+        }, 5000);
     } else{
         console.log('logging in');
         var request = new XMLHttpRequest();
         request.onreadystatechange = function(){
+            var errMsg = document.getElementById('errmsg');
             if(request.readyState === XMLHttpRequest.DONE){
                 if (request.status === 200){
                     var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
-                        var loginMsg = document.getElementById('loginMsg');
-                        var msg3 = `<p style="color:red;">Credentials are invalid.</p>`;
-                        loginMsg.innerHTML = msg3;
                         display2();
+                        dispMsg = `<px>Invalid credentials.</px>`;
+                        errMsg.innerHTML = dispMsg;
+                        document.getElementById("errmsg").style.display = "inline";
+                        setTimeout(function(){ 
+                            document.getElementById("errmsg").style.display = "none"; 
+                        }, 5000);
                     } else {
                        console.log('User logged in.');
                        display1();
                     }
                 } else if(request.status === 403) {
-                    alert('Incorrect credentials.');
+                    dispMsg = `<px>Username/ password doesnot exist</px>`;
+                    errMsg.innerHTML = dispMsg;
+                    document.getElementById("errmsg").style.display = "inline";
+                    setTimeout(function(){ 
+                        document.getElementById("errmsg").style.display = "none"; 
+                    }, 5000);
                 } else if(request.status === 500) {
-                    alert('Unknown error');
+                    dispMsg = `<px>Unknown Error on sign in</px>`;
+                    errMsg.innerHTML = dispMsg;
+                    document.getElementById("errmsg").style.display = "inline";
+                    setTimeout(function(){ 
+                        document.getElementById("errmsg").style.display = "none"; 
+                    }, 5000);
                 }
             }
         };
@@ -64,14 +79,15 @@ var submit2 = document.getElementById('register');
 submit2.onclick = function() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    if(username === "") {
-        var userMsg = document.getElementById('userMsg');
-        var msg1 = `<p style="color:red;">Please enter username</p>`;
-        userMsg.innerHTML = msg1;
-    } else if(password === ""){
-        var pwdMsg = document.getElementById('pwdMsg');
-        var msg2 = `<p style="color:red;">Please enter password</p>`;
-        pwdMsg.innerHTML = msg2;
+    var errMsg = document.getElementById('errmsg');
+    if(username === '' || password === ''){
+        dispMsg = `<px>Please enter new username and password to register</px>`;
+        errMsg.innerHTML = dispMsg;
+        document.getElementById("errmsg").style.display = "inline";
+        setTimeout(function(){ 
+            document.getElementById("errmsg").style.display = "none"; 
+        }, 5000);
+        return;
     } else{
     console.log('register');
     var request = new XMLHttpRequest();
@@ -80,9 +96,19 @@ submit2.onclick = function() {
             console.log('back in main');
             if (request.status === 200) {
                var x = JSON.parse(this.responseText);
-               alert(x);
+               dispMsg = `<px>${x}</px>`;
+               errMsg.innerHTML = dispMsg;
+               document.getElementById("errmsg").style.display = "inline";
+               setTimeout(function(){ 
+                    document.getElementById("errmsg").style.display = "none"; 
+               }, 5000);
             } else {
-                alert('Not able to register');
+                dispMsg = `<px>Please enter new username and password to register</px>`;
+                errMsg.innerHTML = dispMsg;
+                document.getElementById("errmsg").style.display = "inline";
+                setTimeout(function(){ 
+                    document.getElementById("errmsg").style.display = "none"; 
+                }, 5000);
             }
         }
     };
@@ -101,7 +127,12 @@ submit3.onclick = function() {
             if (request.status === 200) {
               display2();
             } else {
-              alert('Not logged out');
+                dispMsg = `<px>Unknown error, unable to log out now.</px>`;
+                errMsg.innerHTML = dispMsg;
+                document.getElementById("errmsg").style.display = "inline";
+                setTimeout(function(){ 
+                document.getElementById("errmsg").style.display = "none"; 
+                }, 5000);
             }
         }
     };
@@ -118,6 +149,21 @@ function display1() {
 //to display login section after logging out
 function display2() {
     document.getElementById("login").style.display = "inline";
-    document.getElementById("logout").style.display = "none";
+    document.getElementById("logout").style.display = "none"
 }
 
+//to display create-article
+function footerDisplay(){
+    var footerLogin = document.getElementById("footer");
+    Login = `<form action="/ui/create-article.html/"> 
+                <button type="submit" id="create-article" class="submit5">Click to create new article</button>
+            </form> `;
+    footerLogin.innerHTML = Login;
+}
+
+//hiding create-article button
+function footerHide(){
+    var footerNoLogin = document.getElementById("footer");
+    noLogin = `<p> Login to be able to enter comments and to create new articles. </p>`;
+    footerNoLogin.innerHTML = noLogin;
+}
