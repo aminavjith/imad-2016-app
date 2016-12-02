@@ -42,6 +42,7 @@ submit1.onclick = function() {
                     var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
                         display2();
+                        footerHide();
                         dispMsg = `<px>Invalid credentials.</px>`;
                         errMsg.innerHTML = dispMsg;
                         document.getElementById("errmsg").style.display = "inline";
@@ -51,6 +52,7 @@ submit1.onclick = function() {
                     } else {
                        console.log('User logged in.');
                        display1();
+                       footerDisplay();
                     }
                 } else if(request.status === 403) {
                     dispMsg = `<px>Username/ password doesnot exist</px>`;
