@@ -12,8 +12,10 @@ function loadLogin() {
             if (request.status === 200) {
              console.log('User logged in.');
              display1();
+             footerDisplay();
           } else{
              display2();
+             footerHide();
           }
         }
     };
@@ -68,6 +70,7 @@ submit1.onclick = function() {
                     var x = JSON.parse(this.responseText);
                     if(x === "Invalid creds."){
                         display2();
+                        footerHide();
                         dispMsg = `<px>Invalid credentials.</px>`;
                         errMsg.innerHTML = dispMsg;
                         document.getElementById("errmsg").style.display = "inline";
@@ -77,6 +80,7 @@ submit1.onclick = function() {
                     } else {
                        console.log('User logged in.');
                        display1();
+                       footerDisplay();
                     }
                 } else if(request.status === 403) {
                     dispMsg = `<px>Username/ password doesnot exist</px>`;
@@ -152,6 +156,7 @@ submit3.onclick = function() {
             console.log('back in main');
             if (request.status === 200) {
               display2();
+              footerHide();
             } else {
                 dispMsg = `<px>Unknown error, unable to log out now.</px>`;
                 errMsg.innerHTML = dispMsg;
@@ -159,6 +164,7 @@ submit3.onclick = function() {
                 setTimeout(function(){ 
                 document.getElementById("errmsg").style.display = "none"; 
                 }, 5000);
+                footerDisplay();
             }
         }
     };
@@ -176,6 +182,22 @@ function display1() {
 function display2() {
     document.getElementById("login").style.display = "inline";
     document.getElementById("logout").style.display = "none";
+}
+
+//to display create-article
+function footerDisplay(){
+    var footerLogin = document.getElementById("footer");
+    Login = `<form action="/ui/create-article.html/"> 
+                <button type="submit" id="create-article" class="submit5">Click to create new article</button>
+            </form> `;
+    footerLogin.innerHTML = Login;
+}
+
+//hiding create-article button
+function footerHide(){
+    var footerNoLogin = document.getElementById("footer");
+    noLogin = `<p> Login to be able to enter comments and to create new articles. </p>`;
+    footerNoLogin.innerHTML = noLogin;
 }
 
 
