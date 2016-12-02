@@ -264,7 +264,6 @@ app.get('/logout/', function(req, res) {
 
 //endpoint to retrieve comments
 app.get('/load-comments/:articleId', function(req, res) {
-  //var articleName= req.params.articleName;
   pool.query("SELECT comments.comment, comments.timestamp, usernames.username FROM comments, usernames, article WHERE comments.user_id = usernames.id AND comments.article_id=article.id AND article.id = $1 ORDER BY timestamp DESC", [req.params.articleId], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
@@ -278,8 +277,9 @@ app.get('/load-comments/:articleId', function(req, res) {
 });
 
 //endpoint to display list of articles
-app.get('/listing/', function(req, res) {
-  pool.query("SELECT id, title, heading FROM article", function(err, result) {
+app.get('/listing/:articleCategory', function(req, res) {
+    var articleCategory= req.params.articleCategory;
+  pool.query("SELECT id, title, heading FROM article WHERE category = $1", [articleCategory], function(err, result) {
     if (err) {
       res.status(500).send(err.toString());
     } else if (result.rows.length === 0) {
@@ -310,8 +310,6 @@ app.get('/articles/:articleName', function(req, res) {
 app.get('/category/:articleCategory', function(req, res) {
     var articleCategory= req.params.articleCategory;
     res.send(createLandingTemplate(articleCategory));
-    }
-  });
 });
 
 //to save comment
