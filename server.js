@@ -225,6 +225,21 @@ app.get('/articles/:articleName', function(req, res) {
   });
 });
 
+//endpoint to display landing
+app.get('/category/:articleCategory', function(req, res) {
+  //var articleName= req.params.articleName;
+  pool.query("SELECT * FROM article WHERE id = $1", [req.params.articleName], function(err, result) {
+    if (err) {
+      res.status(500).send(err.toString());
+    } else if (result.rows.length === 0) {
+      res.status(404).send('File Not Found.');
+    } else {
+      var articleData = result.rows[0];
+      res.send(createArticleTemplate(articleData));
+    }
+  });
+});
+
 //to save comment
 app.post('/submit-comment/:articleId', function(req, res) {
   var commentValue = req.body.comment;
