@@ -41,7 +41,7 @@ function onLoad(){
                 }
             }
     };
-    request.open('GET','http://aminavjith.imad.hasura-app.io/listing/?articleCategory=' + articleCategory, true);
+    request.open('GET','http://aminavjith.imad.hasura-app.io/listing/' + articleCategory, true);
     request.send('null');
 }
 
