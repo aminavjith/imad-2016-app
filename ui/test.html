@@ -2,14 +2,15 @@
 <html>
   <head>
     <title>
-      Test
+      Profile
     </title>
     <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no" />
-    <link  href="/ui/style.css" rel="stylesheet" />
-    <link  href="favicon.ico" rel="icon" />
+    <link  type="text/css" href="/ui/style.css" rel="stylesheet" />
+    <link  href="/favicon.ico" rel="icon" />
   </head>
+
 <body>
-    <div class = "header">
+  <div class = "header">
     <a href="/">
         <img id="img1" src="/ui/logo.jpg" style="height:50px; width:50px;"/>
     </a>
@@ -18,16 +19,15 @@
 
   <body1 id="login" >
 
-    <div id="userarea" class="header"> Username:<br>
+    <div id="userarea" class="header"> Username <br>
         <input placeholder="Username" id="username" type="name"/> 
     </div>
-    <div id="passwordarea" class="header"> Password:<br>
+    <div id="passwordarea" class="header"> Password: <br>
         <input placeholder="Password" id="password" type="password" />
         <span id="errmsg" style="display:none;"> </span>
     </div>
         <input type="button" id="submit-user" class="submit1" value="Login"/>
         <input type="button" id="register" class="submit2" value="Register"/>
-        
   </body1>
 
   <body2 id="logout" style="display:none;">
@@ -36,52 +36,45 @@
     </div>
   </body2>
 </div>
-  <div class="navbar">
-   <ul1>
-  <li1><a href="#home">Home</a></li1>
-  <li1 class="dropdown">
-    <a href="#" class="dropbtn">Writings</a>
-    <div class="dropdown-content">
-      <a href="#">Travel</a>
-      <a href="/">Coding</a>
-    </div>
-  </li1>
-  <li1 class="dropdown">
-    <a href="#" class="dropbtn">About</a>
-    <div class="dropdown-content">
-      <a href="/ui/about-me.html">Myself</a>
-      <a href="/ui/the-site.html">The site</a>
-    </div>
-  </li1>
-</ul1>
-  </div>
-  
-  <div class="bodyx" id="bodyx">
-    <br>
-    <div id="text2">
-        <br>
-        <br>
-        <br>
-        <p> Enter the details of the article you want to create:</p> 
-    <div id="headingarea"> Heading: <br>
-        <textarea type="text" placeholder="Enter heading here." id="heading" cols="50" rows="1"></textarea>
-        <br>
-    </div>
-    <div id="contentarea"> Content: <br>
-        <textarea type="text" placeholder="Enter content here." id="content" cols="200" rows="10"></textarea>
-        <br>
-    </div>
-    <input type="button" id="save-article" class="submit6" value="CREATE ARTICLE"/>
-    <form action="/"> 
-        <button type="submit" id="cancel" class="submit7" value="CANCEL">CANCEL</button>
-    </form> 
+
+<div class="navbar">
+    <ul1 >
+          <li1><a href="/" style="margin-left:50px;">Home</a></li1>
+          <li1 class="dropdown">
+            <a href="#" class="dropbtn">Writings</a>
+            <div class="dropdown-content">
+              <a href="/ui/travel.html">Travel</a>
+              <a href="/ui/coding.html">Coding</a>
+            </div>
+          </li1>
+          <li1 class="dropdown">
+            <a href="#" class="dropbtn">About</a>
+            <div class="dropdown-content">
+                <a href="/ui/about-me.html">Myself</a>
+                <a href="/ui/the-site.html">The site</a>
+            </div>
+          </li1>
+    </ul1>
+</div>
+
+<div class="bodyx">
+  <div id="text2">
+    <p> Click to browse these articles on coding.</p>
+    <y id="articleList">
+    </y>
     
   </div>
+  <div id="img2">
+      <img src="/ui/learn_code.jpg" style="height: 400px; width: 700px;"/>
+  </div>
 </div>
-<div class="footer">
-    
+<hr>
+<hr>
+<div class="footer" id="footer">
 </div>
-<script type="text/javascript" src="/ui/test.js">
+
+<script type="text/javascript" src="/ui/main.js">
     </script>
 </body>
 </html>
+
