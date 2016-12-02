@@ -298,6 +298,10 @@ app.get('/ui/create.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'create.js'));
 });
 
+app.get('/ui/coding.html', function(req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'coding.html'));
+});
+
 app.get('/ui/create-article.html/', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'create-article.html'));
 });
