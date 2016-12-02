@@ -170,20 +170,12 @@ submit3.onclick = function() {
 function display1() {
     document.getElementById("login").style.display = "none";
     document.getElementById("logout").style.display = "inline";
-    var footerLogin = document.getElementById("footer");
-    Login = `<form action="/ui/create-article.html/"> 
-                <button type="submit" id="create-article" class="submit5">Click to create new article</button>
-            </form> `;
-    footerLogin.innerHTML = Login;
 }
 
 //to display login section after logging out
 function display2() {
     document.getElementById("login").style.display = "inline";
     document.getElementById("logout").style.display = "none";
-    var footerNoLogin = document.getElementById("footer");
-    noLogin = `<p> Login to be able to enter comments and to create new articles. </p>`;
-    footerNoLogin.innerHTML = noLogin;
 }
 
 
