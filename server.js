@@ -372,10 +372,6 @@ app.get('/ui/create.js', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'create.js'));
 });
 
-app.get('/ui/coding.html', function(req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'coding.html'));
-});
-
 app.get('/ui/create-article.html/', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'create-article.html'));
 });
@@ -390,10 +386,6 @@ app.get('/ui/test.html/', function(req, res) {
 
 app.get('/ui/the-site.html/', function(req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'the-site.html'));
-});
-
-app.get('/ui/travel.html', function(req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'travel.html'));
 });
 
 app.get('/ui/page.js', function(req, res) {
