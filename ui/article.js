@@ -108,6 +108,7 @@ submit1.onclick = function() {
                     } else {
                        console.log('User logged in.');
                        display1();
+                       displayForm();
                     }
                 } else if(request.status === 403) {
                     dispMsg = `<px>Username/ password doesnot exist</px>`;
@@ -183,6 +184,7 @@ submit3.onclick = function() {
             console.log('back in main');
             if (request.status === 200) {
               display2();
+              hideForm();
             } else {
                 dispMsg = `<px>Unknown error, unable to log out now.</px>`;
                 errMsg.innerHTML = dispMsg;
